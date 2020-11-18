@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline" *ngIf="showMode" style="width: 100%; margin-right: 2em;">
+  <mat-select [formControl]="epiControl" multiple (openedChange)="zerarPesquisa($event)">
+    <mat-form-field class="removePadding" appearance="none" style="width: 100%; padding-right: 1em;">
+      <div class="input-icons">
+        <i class="icon">
+          <mat-icon style="font-size: 34px;" matSuffix>search</mat-icon>
+        </i>
+        <input type="search" matInput placeholder="Pesquisar . . . " (keydown)="$event.stopPropagation()"
+          (keyup)="epiOnKey($event.target.value)" [(ngModel)]="pesquisa" />
+      </div>
+    </mat-form-field>
+    <mat-option *ngFor="let epi of availableEPIs" [value]="epi" (onSelectionChange)="markCheckbox($event)">{{epi.Nome}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

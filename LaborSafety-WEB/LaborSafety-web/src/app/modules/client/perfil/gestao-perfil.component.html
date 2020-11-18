@@ -1,0 +1,162 @@
+<!--Primeira row: texto e dropdowns-->
+<div class="row">
+  <div class="col l12 m12 s12">
+    <div class="title">
+      Gestão de Perfis
+    </div>
+  </div>
+</div>
+<div class="row mat-elevation-z8">
+  <div class="col l12 m12 s12">
+
+    <!--Dropdown de PERFIS-->
+    <div class="col l6 m6 s6">
+      <p class="field-titles">PERFIL</p>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Selecionar Perfil</mat-label>
+        <mat-select required (selectionChange)="selecionarPerfil($event)">
+          <mat-option *ngFor="let perfil of perfis;" [value]="perfil.Nome">
+            {{ perfil.GrupoAD }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!--Dropdown de TELAS-->
+    <div class="col l6 m6 s6">
+      <p class="field-titles">TELAS</p>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Selecionar Tela</mat-label>
+        <mat-select required (selectionChange)="selecionarTela($event)">
+          <mat-option *ngFor="let tela of telas;" [value]="tela.Nome">
+            {{ tela.Nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<!-- Segunda row: paineis -->
+<div class="row mat-elevation-z8">
+  <div class="title" style="margin: 0 0 1em 1em">Tabelas de permissões</div>
+  <!-- Painel da esquerda -->
+  <div class="col l12 m12 s12">
+    <div class="col l5 m5 s5">
+      <mat-expansion-panel [disabled]="pannelDisabled" *ngIf="panelsEnabled">
+        <!-- Titulo do painel -->
+        <mat-expansion-panel-header>
+          {{ (telaSelecionada) ? telaSelecionada.Nome : 'Associar funcionalidades' }}
+        </mat-expansion-panel-header>
+        <mat-selection-list #listaDeFuncionalidadesDaTela>
+          <!-- Opçoes do painel -->
+          <mat-list-option [disabled]="telaSelecionada.CodTela === 1 || perfilSelecionado.CodPerfil === 1" class="optionCSS" *ngFor="let cb of checkBoxes"
+            (click)="onChange(listaDeFuncionalidadesDaTela)" [value]="cb.funcionalidade.CodFuncionalidade"
+            [selected]="cb.selected">
+            {{ cb.funcionalidade.Descricao }}
+          </mat-list-option>
+        </mat-selection-list>
+        <button mat-raised-button class="buttonAdjustments" (click)="inserir()" 
+        [disabled]="(telaSelecionada)?.CodTela === 1 || (perfilSelecionado)?.CodPerfil === 1">SALVAR</button>
+      </mat-expansion-panel>
+    </div>
+
+    <!-- Painel da direita -->
+    <div class="col l7 m7 s7">
+      <mat-expansion-panel [disabled]="pannelDisabled" *ngIf="panelsEnabled">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Funcionalidades das outras telas do sistema
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- Lista de telas não selecionadas -->
+        <div class="row">
+          <div class="col l12 m12 s12">
+            <div class="col l2 m2 s2">
+              <label mat-label>Funcionalidade</label>
+            </div>
+            <!-- Mostrar telas que nao sejam a tela selecionada -->
+            <div *ngFor="let tela of telas">
+              <div class="col l2 m2 s2" *ngIf="telaSelecionada && (tela.Nome !== telaSelecionada.Nome)">
+                <label mat-label>{{tela.Nome}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Checkboxes de cada funcionalidade de cada tela -->
+        <div class="row" *ngFor="let funcionalidade of todasAsFuncionalidades;">
+          <div class="col l12 m12 s12">
+            <div class="col l2 m2 s2">
+              <label mat-label class="labelsCSS">{{ funcionalidade.Descricao }}</label>
+            </div>
+            <div *ngFor="let tela of telas">
+              <div class="col l2 m2 s2" *ngIf="telaSelecionada && (tela.Nome !== telaSelecionada.Nome)">
+                <div *ngIf="verificarEstado(tela.CodTela, funcionalidade.CodFuncionalidade); else elseBlock">
+                  <mat-checkbox disabled [checked]="checada"></mat-checkbox>
+                </div>
+                <ng-template #elseBlock>
+                  <label mat-label>N/A</label>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</div>
+<!-- Tabela de logs -->
+<div class="row mat-elevation-z8">
+  <div class="title" style="margin: 1em 0 1em 1em">
+    Histórico de alterações de perfil
+      <mat-icon class="treeview-icon" style="font-size: 20px;" matTooltip="{{funcTooltip}}"
+        matTooltipPosition="after" matTooltipClass="tooltip-secondary">help_outline
+      </mat-icon>
+  </div>
+
+  <div class="mat-elevation-z2" style="margin: 1em">
+    <form>
+      <mat-table [dataSource]="perfilLogDataSource">
+        <!-- COLUNAS -->
+        <div class="row">
+          <ng-container matColumnDef="Usuario">
+            <mat-header-cell *matHeaderCellDef>Usuário</mat-header-cell>
+            <mat-cell *matCellDef="let log">{{ log.Usuario }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Perfil alterado">
+            <mat-header-cell *matHeaderCellDef>Perfil alterado</mat-header-cell>
+            <mat-cell *matCellDef="let log">{{ log.Perfil }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Tela">
+            <mat-header-cell *matHeaderCellDef>Tela</mat-header-cell>
+            <mat-cell *matCellDef="let log">{{ log.Tela.Nome }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Data de alteracao">
+            <mat-header-cell *matHeaderCellDef>Data de alteração</mat-header-cell>
+            <mat-cell *matCellDef="let log">{{ log.Data }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Funcionalidades anteriores">
+            <mat-header-cell *matHeaderCellDef>Funcionalidades anteriores</mat-header-cell>
+            <mat-cell *matCellDef="let log"><span *ngFor="let func of log.FuncAnt">{{ func.CodFuncionalidade }}</span>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Funcionalidades novas">
+            <mat-header-cell *matHeaderCellDef>Funcionalidades novas</mat-header-cell>
+            <mat-cell *matCellDef="let log"><span *ngFor="let func of log.FuncNova">{{ func.CodFuncionalidade }}</span>
+            </mat-cell>
+          </ng-container>
+        </div>
+
+        <mat-header-row *matHeaderRowDef="logColunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: logColunas"></mat-row>
+
+      </mat-table>
+    </form>
+    <mat-paginator [pageSize]=10></mat-paginator>
+  </div>
+</div>

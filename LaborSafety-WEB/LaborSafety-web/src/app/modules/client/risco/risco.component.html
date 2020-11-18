@@ -1,0 +1,126 @@
+<div *ngIf="estado === 0">
+  <div class="title">Adicionar Risco</div>
+  
+  <div class="mat-elevation-z8" style="margin: 1em 0 0 0">
+
+    <div class="row">
+      <div class="opacityAtEightyPercent">Selecione abaixo o risco que deseja adicionar ao inventário:</div>
+      <mat-form-field style="display: block !important;" appearance="outline">
+        <mat-label>Selecione o risco:</mat-label>
+        <mat-select required (selectionChange)="selecionarRisco($event)" [value]="(riscoSelecionado)?.Nome">
+          <mat-option *ngFor="let risco of riscos" [value]="risco.Nome">{{ risco.Nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+  
+    <mat-dialog-actions>
+      <div class="reverseRow flexitemFull spaced" style="margin: 0 0 2em 0">
+        <button mat-raised-button [disabled]="!riscoSelecionado" class="active" (click)="proximo()">PRÓXIMO</button>
+        <button mat-raised-button class="texto-primary" mat-dialog-close>CANCELAR</button>
+      </div>
+    </mat-dialog-actions>
+
+  </div>
+</div>
+
+<div *ngIf="estado !== 0">
+  <div class="row">
+      <button *ngIf="estado !== 2" mat-button (click)="voltar()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span style="font-size: 18px;" class="opacityAtEightyPercent">
+        Dados do risco
+      </span>
+  </div>
+
+  <div class="mat-elevation-z8">
+
+    <div class="row" style="margin: 0 1em 0 1em">
+      <p class="field-titles">Risco</p>
+      <mat-card class="disabledStyle">{{riscoSelecionado.Nome}}</mat-card>
+    </div>
+  
+    <div class="row basediv3" style="margin: 1em">
+  
+      <div class="basechild6">
+        <p class="field-titles">Severidade</p>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Selecione a severidade</mat-label>
+          <mat-select [disabled]="disabledEdicao" required (selectionChange)="selecionarSeveridade($event)" [value]="(severidadeSelecionada)?.Nome">
+            <mat-option *ngFor="let severidade of severidades" [value]="severidade.Nome">{{severidade.Nome}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="basechild6" *ngIf="data.tela == 0">
+        <p class="field-titles">Probabilidade</p>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Selecione a probabilidade</mat-label>
+          <mat-select [disabled]="disabledEdicao" required (selectionChange)="selecionarFrequencia($event)" [value]="(frequenciaSelecionada)?.Nome">
+            <mat-option *ngFor="let frequencia of frequencias" [value]="frequencia.Nome">{{frequencia.Nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="flexitemFull">
+        <p class="field-titles">Fonte geradora</p>
+        <div class="full-width-textarea">
+          <textarea [disabled]="disabledEdicao"
+                    #fonteGeradora
+                    cdkTextareaAutosize
+                    maxlength="500"
+                    matInput
+                    [value]="fGtextArea"
+                    placeholder="Descreva a fonte geradora">
+          </textarea>
+        </div>
+      </div>
+  
+      <div class="flexitemFull">
+        <p class="field-titles linedistance">Procedimentos</p>
+        <div class="full-width-textarea">
+          <textarea [disabled]="disabledEdicao"
+                    #procedimentosDescricao
+                    cdkTextareaAutosize
+                    maxlength="500"
+                    matInput
+                    [value]="pDtextArea"
+                    placeholder="Descreva os procedimentos">
+          </textarea>
+        </div>
+      </div>
+  
+      <div class="flexitemFull">
+        <p class="field-titles linedistance">Contramedidas</p>
+        <div class="full-width-textarea">
+          <textarea [disabled]="disabledEdicao"
+                    #contramedidasDescricao
+                    cdkTextareaAutosize
+                    maxlength="500"
+                    matInput
+                    [value]="cMtextArea"
+                    placeholder="Descreva as contramedidas">
+          </textarea>
+        </div>
+      </div>
+  
+  
+      <div class="flexitemFull">
+      
+        <div class="row flexitemFull" *ngIf="treeviewLoader">
+          <p class="field-titles linedistance">EPIs</p>
+          <app-lista-epi [episRecebidas]="listaStringEPI" (episEnviadas)="retornaSelecionados($event)"></app-lista-epi>
+        </div>
+  
+        <mat-dialog-actions>
+          <div class="reverseRow flexitemFull spaced linedistance" *ngIf="estado !== 0">
+            <button mat-raised-button class="active" [disabled]="disabledEdicao"
+              (click)="savePopup(fonteGeradora.value, procedimentosDescricao.value, contramedidasDescricao.value)">SALVAR</button>
+            <button mat-raised-button class="texto-primary" mat-dialog-close>CANCELAR</button>
+          </div>
+        </mat-dialog-actions>
+      </div>
+    </div>
+  </div>
+</div>

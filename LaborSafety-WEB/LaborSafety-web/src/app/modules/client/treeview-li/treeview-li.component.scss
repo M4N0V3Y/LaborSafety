@@ -1,0 +1,117 @@
+.mat-tree::before {
+    content: "";
+    position: absolute;
+    border-left: 1px solid lightgrey;
+    height: 98%;
+    left: 20.25px;
+    top: 2em;
+}
+
+
+.mat-tree-node[class*=nodeLevel2]::before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    width: 50px !important;
+    left: 20.25px !important;
+    border-collapse: collapse;
+}
+
+
+.mat-tree-node[class*=nodeLevel3]::before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    left: 80.25px !important;
+    width: 50px !important;
+    height: 48px;
+    margin-top: -24px;
+    border-collapse: collapse;
+}
+
+.mat-tree-node[class*=nodeLevel4]::before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    left: 140.25px !important;
+    width: 50px !important;
+    height: 48px;
+    margin-top: -24px;
+    border-collapse: collapse;
+}
+
+.mat-tree-node[class*=nodeLevel5]::before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    left: 200.25px !important;
+    width: 50px !important;
+    height: 48px;
+    margin-top: -24px;
+    border-collapse: collapse;
+}
+
+.mat-tree-node[class*=nodeLevel6]::before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    left: 260.25px !important;
+    width: 50px !important;
+    height: 48px;
+    margin-top: -24px;
+    border-collapse: collapse;
+}
+
+button {
+    z-index: 5;
+    background-color: white;
+}
+
+.input-icons i { 
+    position: absolute;
+    padding: 4px 4px 4px calc(100% - 36px);
+} 
+  
+.input-icons { 
+    width: 100%; 
+    margin-bottom: 10px; 
+} 
+
+  
+.input-field { 
+    width: 100%; 
+    text-align: center; 
+} 
+
+input.mat-input-element {
+    padding-right: 36px !important;
+}
+
+.gambsDiv {
+    top: 0;
+    position:sticky;
+    position: -webkit-sticky;
+    z-index: 10;
+    background-color: rgb(250,250,250);
+    min-height: 75px;
+    padding: 1em 0 0 1em;
+}
+
+.mat-checkbox {
+    z-index: 6;
+}
+
+.visuallyhidden {
+    display: none;
+  }
+
+.nodeFound {
+    background-color: rgba(0, 128, 0, 0.267);
+    border: 1px solid green;
+    border-radius: 3px;
+}

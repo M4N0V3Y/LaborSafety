@@ -1,0 +1,21 @@
+<mat-tree [dataSource]="fonteDados" [treeControl]="controleTree">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+    <mat-checkbox class="checklist-leaf-node"
+                  [checked]="checklistSelecionados.isSelected(node)"
+                  (change)="mudancaItemFilhoSelecao(node)">{{node.nome}}
+    </mat-checkbox>
+  </mat-tree-node>
+  
+  <mat-tree-node *matTreeNodeDef="let node; when: temFilho" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'toggle ' + node.filename">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{controleTree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    <mat-checkbox [checked]="todosDescendentesSelecionados(node)"
+                  [indeterminate]="descendentesParcialmenteSelecionados(node)"
+                  (change)="mudancaItemSelecao(node)">{{node.nome}}
+    </mat-checkbox>
+  </mat-tree-node>
+</mat-tree>

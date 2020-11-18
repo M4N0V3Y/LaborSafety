@@ -1,0 +1,31 @@
+<div class="row mat-elevation-z8">
+  <div class="col m6">
+    <mat-form-field class=" formfield " style="width: 700px">
+      <mat-icon matPrefix> search </mat-icon>
+      <input type="search" aria-label="Number" matInput [(ngModel)]="termoPesquisa"
+        placeholder="Pesquisar usuarios" (keyup)="filtrar()" />
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <form>
+    <mat-table [dataSource]="usuariosPerfisDataSource">
+      <ng-container matColumnDef="C8ID">
+        <mat-header-cell *matHeaderCellDef> C8ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.C8ID }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Nome">
+        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.Nome }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Perfis">
+        <mat-header-cell *matHeaderCellDef> Perfis Associados </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.Perfis }} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+    </mat-table>
+  </form>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

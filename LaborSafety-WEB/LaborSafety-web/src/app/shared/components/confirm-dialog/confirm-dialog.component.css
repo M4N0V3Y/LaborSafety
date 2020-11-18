@@ -1,0 +1,23 @@
+.btn-dialog {
+  float: right !important;
+  color: #000 !important;
+  background: transparent !important;
+  min-width: 30px !important;
+  width: 30px !important;
+}
+
+.modal-body-dialog {
+  margin-top: 15px !important;
+  font-weight: bold !important;
+}
+
+.btn-footer {
+  margin-top: 10px !important;
+  text-align: center;
+}
+
+.modal-header-dialog {
+  font-weight: bold !important;
+  text-align: center !important;
+  min-height: 30px !important;
+}

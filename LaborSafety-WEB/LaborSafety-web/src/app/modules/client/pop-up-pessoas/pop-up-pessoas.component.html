@@ -1,0 +1,191 @@
+<title>
+  Adição de pessoa
+</title>
+
+<div class="row">
+  <div class="col l12 m12 s12">
+    <div class="title">
+      Adicionar pessoa
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isForm!=true">
+  <div class="mat-elevation-z8" style="margin-bottom: 1em">
+
+    <div class="basediv3">
+
+      <div class="basechild6">
+        <div class="field-titles">PESQUISAR PESSOAS</div>
+        <mat-form-field class="removePadding" appearance="none"
+          style="width: 100%">
+          <div class="input-icons">
+            <i class="icon"><mat-icon style="font-size: 36px;" matSuffix>search</mat-icon></i>
+            <input type="search" aria-label="Number" matInput [(ngModel)]="termoPesquisa" (keyup)="filtrar($event)" />
+          </div>
+        </mat-form-field>
+      </div>
+
+      <div class="basechild6">
+        <div class="field-titles">FILTROS</div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Selecione o Filtro</mat-label>
+          <mat-select required [(ngModel)]="filtro">
+            <mat-option value="Nome">Nome</mat-option>
+            <mat-option value="CPF">CPF</mat-option>
+            <mat-option value="Matricula">Matricula</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8">
+    
+<div class="row">
+  <div class="col l12 m12 s12">
+    <div class="title">
+      Resultados da pesquisa
+    </div>
+  </div>
+</div>
+
+    <table mat-table [dataSource]="dataSource" matSort style="height: 100%;">
+
+      <!-- ID Column 
+        <ng-container matColumnDef="CodPessoa">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CodPessoa </th>
+          <td mat-cell *matCellDef="let row"> {{row.CodPessoa}} </td>
+        </ng-container>-->
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="Matricula">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricula </th>
+        <td mat-cell *matCellDef="let row"> {{row.Matricula}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let row"> {{row.Nome}} </td>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="CPF">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CPF </th>
+        <td mat-cell  mask="000.000.000-00" *matCellDef="let row"> {{row.CPF}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Telefone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </th>
+        <td mat-cell *matCellDef="let row"> {{row.Telefone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.Email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Empresa">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+        <td mat-cell *matCellDef="let row"> {{row.Empresa}} </td>
+      </ng-container>
+      <ng-container matColumnDef="opcoes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;"> Opções </th>
+        <td mat-cell *matCellDef="let row; let i = index" style="text-align: center;">
+          <button mat-button color="padraoPrimario" style="font-size: 12px; padding: 0;" (click)="inserir(row)">
+            <mat-icon>library_add</mat-icon>
+          </button>
+
+          <button mat-button color="padraoPrimario" style="font-size: 12px;padding: 0;" (click)="popUpDeletarPessoa(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <button mat-button color="padraoPrimario" style="font-size: 12px;padding: 0;" (click)="editarPessoa(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-dialog-actions>
+      <div class="reverseRow flexitemFull spaced" style="margin-bottom: 1em">
+        <button mat-raised-button class="active" (click)="cadastrar()">CADASTRAR</button>
+        <button mat-raised-button class="texto-primary" mat-dialog-close>CANCELAR</button>
+      </div>
+    </mat-dialog-actions>
+
+
+  </div>
+</div>
+
+  <div *ngIf="isForm==true">
+    <div class="mat-elevation-z8">
+
+      <div class="row">
+        <div class="col l6 m6 s6 ">
+          <p class="field-titles">MATRÍCULA</p>
+          <mat-form-field appearance="none" class="ninetywidth removePadding">
+            <input matInput maxlength="50" [(ngModel)]="pessoa.Matricula" name="Matricula">
+          </mat-form-field>
+        </div>
+  
+        <div class="col l6 m6 s6 ">
+          <p class="field-titles">NOME*</p>
+          <mat-form-field appearance="none" class="ninetywidth removePadding">
+            <input matInput maxlength="50" [(ngModel)]="pessoa.Nome" name="Matricula">
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col l6 m6 s6 ">
+          <p class="field-titles">CPF*</p>
+          <mat-form-field appearance="none" class="ninetywidth removePadding">
+            <input mask="000.000.000-00" matInput maxlength="14" [(ngModel)]="pessoa.CPF" name="Matricula">
+          </mat-form-field>
+        </div>
+  
+        <div class="col l6 m6 s6 ">
+          <p class="field-titles">TELEFONE</p>
+          <mat-form-field appearance="none" class="ninetywidth removePadding">
+            <input mask="(00) 00000-0000" matInput maxlength="19" [(ngModel)]="pessoa.Telefone" name="Matricula">
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col l6 m6 s6 ">
+          <p class="field-titles">E-MAIL</p>
+          <mat-form-field appearance="none" class="ninetywidth removePadding">
+            <input matInput maxlength="50" [(ngModel)]="pessoa.Email" name="Matricula">
+          </mat-form-field>
+        </div>
+  
+        <div class="col l6 m6 s6 ">
+          <p class="field-titles">EMPRESA</p>
+          <mat-form-field appearance="none" class="ninetywidth removePadding">
+            <input matInput maxlength="50" [(ngModel)]="pessoa.Empresa" name="Matricula">
+          </mat-form-field>
+        </div>
+  
+      </div>
+      
+      <mat-dialog-actions>
+        <div class="reverseRow flexitemFull spaced" style="margin-bottom: 1em">
+          <button mat-raised-button class="active" (click)="salvarCadastro()">SALVAR</button>
+          <button mat-raised-button class="texto-primary" mat-dialog-close>CANCELAR</button>
+        </div>
+      </mat-dialog-actions>
+    </div>
+  </div>
+
+
+
+

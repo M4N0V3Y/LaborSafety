@@ -1,0 +1,13 @@
+<div *ngIf="showCloseButton || (modalHeader && modalHeader !== '')" class="modal-header modal-header-dialog">
+  <span>{{ modalHeader }}</span>
+  <button *ngIf="showCloseButton" mat-raised-button class="close btn-dialog" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body modal-body-dialog" style="text-align: center">
+  {{ modalContent }}
+</div>
+<div class="modal-footer btn-footer">
+  <button *ngIf="showCancel" class="btn btn-md btn-default" (click)="close()">Cancel</button>
+  <button class="btn btn-md btn-primary" (click)="confirm()" style="background-color: #2196F3;">Ok</button>
+</div>

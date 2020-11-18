@@ -1,0 +1,67 @@
+<div *ngIf="editingMode == true">
+  <mat-card class="tooltip-primary" style="margin: 1em;">
+    <div class="row">
+      <div class="row">
+        Carregando locais selecionados, por favor aguarde . . .
+      </div>
+      <div class="row" style="margin-top: 1em;">
+        <mat-progress-bar
+          [value]="charge">
+        </mat-progress-bar>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<div  [ngClass]="{'visuallyhidden' : editingMode}">
+  <div class="gambsDiv" >
+    <div class="field-titles" style="margin: 0 0 0 1em">BUSCAR LOCAL</div>
+    <div class="basediv">
+      <div class="basechild4">
+        <mat-form-field class="removePadding" appearance="none" style="width: 100%;">
+          <div class="input-icons">
+            <i class="icon">
+              <mat-icon style="font-size: 34px;" matSuffix>search</mat-icon>
+            </i>
+            <input type="search" matInput placeholder="Digite o código do local a pesquisar..."
+              [(ngModel)]="pesquisaLocal" (ngModelChange)="pesquisaLocal= $event.toUpperCase()" />
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="basechild3" style="margin: 20px 0 0 1em;">
+        <button mat-raised-button color="padraoPrimario" (click)="searchLocal()">
+          PESQUISAR LI
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="position: relative">
+    <mat-tree #treeSelector [dataSource]="dataSourceLI" [treeControl]="treeControlLI">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding [matTreeNodePaddingIndent]="60"
+      [ngClass]="{'1': 'nodeLevel2', '2':'nodeLevel3', '3': 'nodeLevel4', '4':'nodeLevel5', '5':'nodeLevel6' }[node.Level]">
+        <button mat-icon-button disabled></button>
+        <mat-checkbox class="checklist-leaf-node" [disabled]="disabledNodes(node)"
+          [checked]="checklistSelection.isSelected(node)" (change)="LocalLeafItemSelectionToggle(node)">{{node.Nome}}
+        </mat-checkbox>
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding [matTreeNodePaddingIndent]="60"
+      [ngClass]="{'1': 'nodeLevel2', '2':'nodeLevel3', '3': 'nodeLevel4', '4':'nodeLevel5', '5':'nodeLevel6' }[node.Level]">
+        <button mat-icon-button matTreeNodeToggle (click)="callBackend(node)" [disabled]="node.IsLoading"
+          [attr.aria-label]="'toggle ' + node.filename">
+          <mat-icon class="mat-icon-rtl-mirror treeview-icon">
+            {{treeControlLI.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        <mat-checkbox [checked]="descendantsAllSelected(node)" [disabled]="disabledNodes(node)"
+          [indeterminate]="descendantsPartiallySelected(node)" (change)="LocalItemSelectionToggle(node)">{{node.Nome}}
+        </mat-checkbox>
+        <mat-progress-bar *ngIf="node.IsLoading" style="margin: 0 2em 0 2em;"
+        mode="indeterminate"> </mat-progress-bar>
+      </mat-tree-node>
+
+    </mat-tree>
+  </div>
+
+</div>

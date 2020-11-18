@@ -1,0 +1,23 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar class="mat-accent m-0 full-width">
+    <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+      <div class="full-width">
+        <mat-icon class="vertical-align-middle">warning</mat-icon>
+        <span class="title dialog-title vertical-align-middle">{{titulo}}</span>
+        <button class="float-right" mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-16 pb-0 m-0" fxLayoutAlign="center">
+    <h3>{{mensagem}}</h3>
+  </div>
+  <div mat-dialog-actions class="m-0" fxLayout="row" fxLayoutAlign="center">
+    <button mat-raised-button color="accent" class="save-button" aria-label="SAVE" matTooltip="Confirmar" type="submit"
+      (click)="matDialogRef.close(true)">
+      OK
+    </button>
+  </div>
+</div>

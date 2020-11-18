@@ -1,0 +1,23 @@
+<mat-tree #epiTreeSelector [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding matTreeNodePaddingIndent="45">
+    <button mat-icon-button disabled></button>
+    <mat-checkbox class="checklist-leaf-node"
+                  [checked]="checklistSelection.isSelected(node)"
+                  (change)="todoLeafItemSelectionToggle(node)">{{node.description}}</mat-checkbox>
+  </mat-tree-node>
+
+  <mat-tree-node  *matTreeNodeDef="let node; when: hasChild"
+                  matTreeNodePadding
+                  matTreeNodePaddingIndent="45">
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'toggle ' + node.filename"
+            (click)="callBackend(node)">
+      <mat-icon class="mat-icon-rtl-mirror treeview-icon">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    <mat-checkbox [checked]="checklistSelection.isSelected(node) || descendantsAllSelected(node)"
+                  [indeterminate]="descendantsPartiallySelected(node)"
+                  (change)="todoItemSelectionToggle(node)">{{node.description}}</mat-checkbox>
+  </mat-tree-node>
+</mat-tree>

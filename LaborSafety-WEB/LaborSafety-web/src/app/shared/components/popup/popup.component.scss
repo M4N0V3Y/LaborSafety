@@ -1,0 +1,56 @@
+.error_icon {
+    background-color: rgba($color: rgb(211, 0, 0), $alpha: 0.9);
+    color: white;
+    font-size: 40px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.success_icon {
+    background-color: rgba($color: rgb(0, 87, 0), $alpha: 0.9);
+    color: white;
+    font-size: 40px;
+    display: flex;
+    flex: 1;
+    justify-content: center !important;
+}
+
+.confirm_icon {
+    background-color: rgba($color: rgb(255, 153, 0), $alpha: 0.9);
+    color: white;
+    font-size: 40px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.orange_button {
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.9);
+    color: rgb(255, 153, 0);
+  }
+
+.green_button {
+    flex: 1;
+    box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.9);
+    color: rgb(0, 87, 0);
+}
+
+.red_button {
+    flex: 1;
+    box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.9);
+    color: rgb(211, 0, 0);
+}
+.mat-column-codigo {
+    flex: 0 0 10% !important;
+  }
+.mat-column-celula {
+    flex: 0 0 15% !important;
+}
+.mat-header-cell{
+    justify-content: center;
+}
+
+
+

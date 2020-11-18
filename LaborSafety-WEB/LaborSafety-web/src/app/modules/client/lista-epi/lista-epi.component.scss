@@ -1,0 +1,17 @@
+.input-icons i { 
+    position: absolute;
+    padding: 4px 4px 4px calc(100% - 36px);
+  } 
+  
+  .input-icons { 
+    width: 100%; 
+  }
+  
+  .input-field { 
+    width: 100%; 
+    text-align: center; 
+  } 
+  
+  input.mat-input-element {
+    padding-right: 40px !important;
+  }

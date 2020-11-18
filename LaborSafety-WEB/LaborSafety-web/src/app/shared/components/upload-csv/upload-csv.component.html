@@ -1,0 +1,4 @@
+<button mat-stroked-button color="accent" (click)="fileInput.click()">
+  <mat-icon>add_to_photos</mat-icon>
+  <input #fileInput type="file" (change)="changeListener($event.target.files)" style="display:none;" />
+</button>

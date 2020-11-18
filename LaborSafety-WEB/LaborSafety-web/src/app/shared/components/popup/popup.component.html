@@ -1,0 +1,107 @@
+<div *ngIf="data.tipoPopup!=4; else popUpTabela">
+  <div *ngIf="data.tipoPopup!=5; else popUpErrosLocais">
+    <div class="row basediv2">
+      <div [ngClass]="{ '0': 'error_icon', '1': 'success_icon', '2':'confirm_icon', '3': 'confirm_icon', '6': 'confirm_icon' }[data.tipoPopup]">
+          <mat-icon [inline]="true">{{iconData}}</mat-icon>
+      </div>
+    </div>
+    <div class="row basediv5">
+      <div [innerHTML]="textoData" style="opacity: 0,8; margin: 15px; text-align: center !important;">
+      </div>
+    </div>
+    
+      <div class="basediv2" style="text-align: center; margin: 15px" *ngIf="data.tipoPopup!=6">
+        <div [ngClass]="(data.tipoPopup == 2)?'basechild2-second-version':'basediv2'">
+          <button [ngClass]="{ '0': 'red_button', '1': 'green_button', '2':'orange_button', '3':'orange_button' }[data.tipoPopup]"
+                  mat-raised-button
+                  mat-dialog-close="close"
+                  >
+                  {{mensagemButton}}
+          </button>
+        </div>
+        <div *ngIf="data.tipoPopup==2" class="basechild2-second-version">
+          <button  [ngClass]="{ '0': 'red_button', '1': 'green_button', '2':'orange_button' }[data.tipoPopup]"
+                  mat-raised-button
+                  mat-dialog-close="CONFIRMAR"
+                  >
+                CONFIRMAR
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<ng-template #popUpTabela>
+  
+  <div class="row basediv2">
+    <div [ngClass]="{ '0': 'error_icon', '1': 'success_icon', '2':'confirm_icon', '3': 'confirm_icon', '4': 'error_icon'  }[data.tipoPopup]">
+        <mat-icon [inline]="true">{{iconData}}</mat-icon>
+    </div>
+  </div>
+  <div style="justify-content: center!important;" class="row basediv2">
+    <h6 [innerHTML]="textoData" style="opacity: 0,8; margin: 15px">
+    </h6>
+  </div>
+    <form >
+      <mat-table  [dataSource]="data.erros" [trackBy]="trackBy">
+        <ng-container>
+          <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef> Codigo </mat-header-cell>
+            <mat-cell style="justify-content: center;"  *matCellDef="let element"> {{ element.codigo }} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="descricao">
+            <mat-header-cell *matHeaderCellDef style="justify-content: center;"> Descricao </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.descricao }} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="celula">
+            <mat-header-cell *matHeaderCellDef> Celula </mat-header-cell>
+            <mat-cell style="justify-content: center;" *matCellDef="let element"> {{ element.celula }} </mat-cell>
+          </ng-container>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+      </mat-table>
+    </form>
+    <div class="basediv2" style="text-align: center; margin: 15px">
+      <button [ngClass]="{ '0': 'red_button', '1': 'green_button', '2':'orange_button', '3':'orange_button','4': 'red_button' }[data.tipoPopup]"
+      mat-raised-button
+      mat-dialog-close="close">
+        {{mensagemButton}}
+      </button>
+    </div>
+
+</ng-template>
+
+<ng-template #popUpErrosLocais>
+
+  <div class="row basediv2">
+    <div [ngClass]="{ '0': 'error_icon', '1': 'success_icon', '2':'confirm_icon', '3': 'confirm_icon', '4': 'error_icon', '5': 'error_icon'  }[data.tipoPopup]">
+        <mat-icon [inline]="true">{{iconData}}</mat-icon>
+    </div>
+  </div>
+  <div style="justify-content: center!important; margin-bottom: 0!important;" class="row basediv2">
+    <h6 [innerHTML]="textoData" style="opacity: 0,8; text-align: center; margin: 15px">
+    </h6>
+  </div>
+    <form >
+      <mat-table  [dataSource]="data.locaisInstalacao" [trackBy]="trackBy">
+        <ng-container>
+          <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+            <mat-cell style="justify-content: center;  text-align: center;"  *matCellDef="let element"> {{ element }} </mat-cell>
+          </ng-container>
+         
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumnsLocais"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsLocais"> </mat-row>
+      </mat-table>
+    </form>
+    <div class="basediv2" style="text-align: center; margin: 15px">
+      <button [ngClass]="{ '0': 'red_button', '1': 'green_button', '2':'orange_button', '3':'orange_button','4': 'red_button','5': 'red_button' }[data.tipoPopup]"
+      mat-raised-button
+      mat-dialog-close="close">
+        {{mensagemButton}}
+      </button>
+    </div>
+
+</ng-template>

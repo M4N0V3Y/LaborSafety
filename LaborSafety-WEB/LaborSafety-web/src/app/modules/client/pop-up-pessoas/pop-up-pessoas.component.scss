@@ -1,0 +1,87 @@
+@import '../../../variables.scss'; 
+
+.active {
+    background-color: $primary-color;
+    color: white;
+    font-size: medium;
+}
+
+.reverseRow {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+.disabledStyle {
+    background-color: rgba(210, 210, 210, 0.4) !important;
+    border-color: grey !important;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.flexitemHalf {
+    width: 50%;
+    margin: auto;
+}
+
+.flexitemFull {
+    width: 100%;
+    margin: auto;
+}
+
+.halfwidth {
+    width: 45%;
+}
+
+.ninetywidth {
+    width:90%;
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+.spaced {
+    flex: 1 1 200px;
+    justify-content: space-evenly;
+}
+
+.input-icons i { 
+    position: absolute;
+    padding: 4px 4px 4px 86%;
+} 
+  
+.input-icons { 
+    width: 100%; 
+    margin-bottom: 10px; 
+} 
+
+  
+.input-field { 
+    width: 100%; 
+    text-align: center; 
+} 
+
+input.mat-input-element {
+    padding-right: 12% !important;
+}
+
+
+.removePadding {
+    .mat-form-field-flex {
+        padding: 0 !important;
+    }
+    padding-top: 10px !important;
+}
+.mat-column-opcoes {
+    width: 30% !important;
+   
+  }
+.td.mat-cell:last-of-type{
+    padding: 0;
+}
+

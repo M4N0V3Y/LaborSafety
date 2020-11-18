@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <title>APR</title>
+  <base id="baseHref" href="/">
+  <style>
+    #notfound {
+      height: 100%;
+    }
+
+    #notfound .notfound {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .notfound {
+      max-width: 520px;
+      width: 100%;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .notfound .notfound-404 {
+      position: relative;
+      height: 200px;
+      margin: 0px auto 20px;
+      z-index: -1;
+    }
+
+    .notfound .notfound-404 h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 236px;
+      font-weight: 200;
+      margin: 0px;
+      color: #211b19;
+      text-transform: uppercase;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .notfound .notfound-404 h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #211b19;
+      background: #fff;
+      padding: 10px 5px;
+      margin: auto;
+      display: inline-block;
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      right: 0;
+    }
+
+    .notfound .notfound-text h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #211b19;
+      background: #fff;
+      padding: 10px 5px;
+      margin: auto;
+      margin-bottom: 10px !important;
+      display: inline-block;
+    }
+
+    .notfound a {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-block;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 13px 23px;
+      background: #ff6300;
+      font-size: 18px;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+    }
+
+    .notfound a:hover {
+      color: #ff6300;
+      background: #211b19;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="notfound">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h1>Oops!</h1>
+        <h2>Este browser não é compatível</h2>
+      </div>
+      <div class="notfound-text">
+        <h3>Acesse com o Chrome, Firefox, Safari, Edge ou IE11</h3>
+      </div>
+      <a id="aGoHome" href="/">Ir para Home</a>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  document.getElementById('baseHref').attributes['href'].value = localStorage.getItem('base-href');
+  document.getElementById('aGoHome').attributes['href'].value = localStorage.getItem('base-href');
+
+  function getBrowser() {
+    // Opera 8.0+
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    if (isOpera) {
+      return 'opera';
+    }
+
+    // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    if (isFirefox) {
+      return 'firefox';
+    }
+
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
+      return p.toString() === "[object SafariRemoteNotification]";
+    })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    if (isSafari) {
+      return 'safari';
+    }
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+    if (isIE) {
+      return 'IE';
+    }
+
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+    if (isEdge) {
+      return 'edge';
+    }
+
+    // Chrome 1 - 71
+    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+    if (isChrome) {
+      return 'chrome';
+    }
+  }
+
+  // Get lower IE 11
+  function verifyLowerIE11() {
+    var version = detectIE();
+
+    return !version || version < 11;
+  }
+
+  function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+      // IE 10 or older => return version number
+      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+      // IE 11 => return version number
+      var rv = ua.indexOf('rv:');
+      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+      // Edge (IE 12+) => return version number
+      return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+  }
+
+  function initializeDetection() {
+    var browserName = getBrowser();
+    var isIE = !browserName || browserName.trim().toUpperCase() === 'IE';
+
+    if (window.location.href && window.location.href.trim().toLowerCase().indexOf('browser-error') === -1) {
+      if (isIE) {
+        if (verifyLowerIE11()) {
+          location.href = window['base-href'] + 'assets/browser-error.html';
+        }
+      }
+    } else if (isIE && !verifyLowerIE11()) {
+      location.href = window['base-href'];
+    }
+  }
+
+  (function (window, undefined) {
+    initializeDetection();
+  })(window);
+
+</script>
+
+</html>

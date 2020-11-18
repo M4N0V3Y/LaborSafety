@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import './theme/my-theme.scss';
+
+// specify theme class eg: <body class="my-theme"> ... </body>
+
+  // use our theme with angular-material-theme mixin
+  @include angular-material-theme($my-theme);
+
+
+@import 'node_modules/materialize-css/sass/materialize';
+$roboto-font-path: 'node_modules/materialize-css/dist/fonts/roboto/';
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+}
+body {
+  overflow: auto;
+}
+
+
+$grid: 12.5%;
+.flex {
+  display: flex;
+}
+.flex-horizontal {
+  flex-direction: row;
+}
+.flex-vertical {
+  flex-direction: column;
+}
+.flex-central {
+  align-items: center;
+  justify-content: center;
+}
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8 {
+  display: flex;
+  flex-direction: column;
+}
+.col-1 {
+  flex: 0 0 $grid;
+  width: $grid;
+}
+.col-2 {
+  flex: 0 0 $grid * 2;
+  width: $grid * 2;
+}
+.col-3 {
+  flex: 0 0 $grid * 3;
+  width: $grid * 3;
+}
+.col-4 {
+  flex: 0 0 $grid * 4;
+  width: $grid * 4;
+}
+.col-5 {
+  flex: 0 0 $grid * 5;
+  width: $grid * 5;
+}
+.col-6 {
+  flex: 0 0 $grid * 6;
+  width: $grid * 6;
+}
+.col-7 {
+  flex: 0 0 $grid * 7;
+  width: $grid * 7;
+}
+.col-8 {
+  flex: 0 0 $grid * 8;
+  width: $grid * 8;
+}

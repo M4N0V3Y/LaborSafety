@@ -1,0 +1,64 @@
+.mat-tree::before {
+    content: "";
+    position: absolute;
+    border-left: 1px solid lightgrey;
+    height: 98%;
+    left: 19px;
+    top: 2em;
+
+}
+
+.mat-tree-node[aria-level]::before {
+    border-bottom: 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    left: 65px !important;
+    width: 44px !important;
+    height: 48px;
+    margin-top: -22px;
+}
+
+
+.mat-tree-node:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid lightgrey;
+    width: 38px;
+    left: 19px;
+}
+
+.mat-tree.mat-tree-node.toggle-children-wrapper.toggle-children::before {
+    display: none;
+}
+
+.mat-tree .mat-tree-node .toggle-children-wrapper {
+    width: 13px;
+    height: 13px;
+    border: 2px solid yellow;
+    position: absolute;
+    left: 15px;
+    margin-top: 5px;
+    margin-left: 0;
+    display: inline-block;
+    background-color: #fff;
+    z-index: 1
+}
+
+.mat-tree .mat-tree-node .toggle-children-wrapper::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    border-top: 2px solid green;
+    position: absolute;
+    top: 5px;
+    left: 2px
+}
+
+.mat-tree .mat-tree-node .toggle-children-wrapper.toggle-children-wrapper-collapsed::after {
+    content: "";
+    display: inline-block;
+    height: 7px;
+    border-left: 2px solid red;
+    position: absolute;
+    top: 2px;
+    left: 5px
+}
