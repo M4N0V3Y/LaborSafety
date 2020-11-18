@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;SI_Arquivo_OutBinding&quot; /&gt;" bindingType="basicHttpBinding" name="SI_Arquivo_OutBinding" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://tkcsac2.tkcsa.com.br:50600/XISOAPAdapter/MessageServlet?senderParty=&amp;amp;senderService=BS_APR_PT&amp;amp;receiverParty=&amp;amp;receiverService=&amp;amp;interface=SI_Arquivo_Out&amp;amp;interfaceNamespace=http://ternium.com.br/INT_FromERP_toAPR_PT&amp;amp;version=3.0&amp;amp;Sender.Service=BS_APR_PT&amp;amp;Interface=http%3A%2F%2Fternium.com.br%2FINT_FromERP_toAPR_PT%5ESI_Arquivo_Out&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;SI_Arquivo_OutBinding&quot; contract=&quot;SVC_SAP.SI_Arquivo_Out&quot; name=&quot;SI_Arquivo_OutPort&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://tkcsac2.tkcsa.com.br:50600/XISOAPAdapter/MessageServlet?senderParty=&amp;amp;senderService=BS_APR_PT&amp;amp;receiverParty=&amp;amp;receiverService=&amp;amp;interface=SI_Arquivo_Out&amp;amp;interfaceNamespace=http://ternium.com.br/INT_FromERP_toAPR_PT&amp;amp;version=3.0&amp;amp;Sender.Service=BS_APR_PT&amp;amp;Interface=http%3A%2F%2Fternium.com.br%2FINT_FromERP_toAPR_PT%5ESI_Arquivo_Out&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;SI_Arquivo_OutBinding&quot; contract=&quot;SVC_SAP.SI_Arquivo_Out&quot; name=&quot;SI_Arquivo_OutPort&quot; /&gt;" contractName="SVC_SAP.SI_Arquivo_Out" name="SI_Arquivo_OutPort" />
+  </endpoints>
+</configurationSnapshot>

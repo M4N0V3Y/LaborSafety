@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:p1="http://ternium.com.br/INT_FromERP_toAPR_PT" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="SI_Arquivo_Out" targetNamespace="http://ternium.com.br/INT_FromERP_toAPR_PT" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation />
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_SI_Arquivo_Out" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://ternium.com.br/INT_FromERP_toAPR_PT" targetNamespace="http://ternium.com.br/INT_FromERP_toAPR_PT" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="MT_Arquivo" type="p1:DT_Arquivo" />
+      <xsd:complexType name="DT_Arquivo">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">daa77d7fa5a911ea83fc000003cfb446</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Num_Ordem" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Nome_Arquivo" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">7c363e3d9f7211eaa7650050569f70d1</xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MT_Arquivo">
+    <wsdl:documentation />
+    <wsdl:part name="MT_Arquivo" element="p1:MT_Arquivo" />
+  </wsdl:message>
+  <wsdl:portType name="SI_Arquivo_Out">
+    <wsdl:documentation />
+    <wsdl:operation name="SI_Arquivo_Out">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_SI_Arquivo_Out" />
+      </wsp:Policy>
+      <wsdl:input message="p1:MT_Arquivo" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SI_Arquivo_OutBinding" type="p1:SI_Arquivo_Out">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <wsdl:operation name="SI_Arquivo_Out">
+      <operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <wsdl:input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SI_Arquivo_OutService">
+    <wsdl:port name="SI_Arquivo_OutPort" binding="p1:SI_Arquivo_OutBinding">
+      <address location="http://tkcsac2.tkcsa.com.br:50600/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=BS_APR_PT&amp;receiverParty=&amp;receiverService=&amp;interface=SI_Arquivo_Out&amp;interfaceNamespace=http://ternium.com.br/INT_FromERP_toAPR_PT&amp;version=3.0&amp;Sender.Service=BS_APR_PT&amp;Interface=http%3A%2F%2Fternium.com.br%2FINT_FromERP_toAPR_PT%5ESI_Arquivo_Out" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:p1="http://ternium.com.br/INT_FromERP_toAPR_PT" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="SI_PERFILCAT_LaborSafety_RFC04_Out" targetNamespace="http://ternium.com.br/INT_FromERP_toAPR_PT" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation />
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="OP_SI_PERFILCAT_LaborSafety_RFC04_Out" />
+  <wsdl:types>
+    <xsd:schema xmlns="http://ternium.com.br/INT_FromERP_toAPR_PT" targetNamespace="http://ternium.com.br/INT_FromERP_toAPR_PT" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="MT_PERFILCAT_LaborSafety_RFC04_Response" type="p1:DT_PERFILCAT_LaborSafety_RFC04_Response" />
+      <xsd:element name="MT_PERFILCAT_LaborSafety_RFC04" type="p1:DT_PERFILCAT_LaborSafety_RFC04" />
+      <xsd:complexType name="DT_PERFILCAT_LaborSafety_RFC04_Response">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">94de1f3d5edf11ea982d000003cfb447</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Response">
+            <xsd:annotation>
+              <xsd:appinfo source="http://sap.com/xi/TextID">94e231215edf11eac30e0050569f70e6</xsd:appinfo>
+            </xsd:annotation>
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Perfil_Catalogo" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">94e2311f5edf11ea9b320050569f70e6</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Status" type="xsd:string">
+                  <xsd:annotation>
+                    <xsd:appinfo source="http://sap.com/xi/TextID">94e231205edf11ea9ec60050569f70e6</xsd:appinfo>
+                  </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="Descricao" type="xsd:string" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DT_PERFILCAT_LaborSafety_RFC04">
+        <xsd:annotation>
+          <xsd:appinfo source="http://sap.com/xi/VersionID">8ca9200652a111ea8ede000003cfb447</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Request">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" name="Perfil_Catalogo" type="xsd:string" />
+                <xsd:element minOccurs="0" name="Desc_Perfil_Catalogo" type="xsd:string" />
+                <xsd:element minOccurs="0" name="Status" type="xsd:string" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MT_PERFILCAT_LaborSafety_RFC04">
+    <wsdl:documentation />
+    <wsdl:part name="MT_PERFILCAT_LaborSafety_RFC04" element="p1:MT_PERFILCAT_LaborSafety_RFC04" />
+  </wsdl:message>
+  <wsdl:message name="MT_PERFILCAT_LaborSafety_RFC04_Response">
+    <wsdl:documentation />
+    <wsdl:part name="MT_PERFILCAT_LaborSafety_RFC04_Response" element="p1:MT_PERFILCAT_LaborSafety_RFC04_Response" />
+  </wsdl:message>
+  <wsdl:portType name="SI_PERFILCAT_LaborSafety_RFC04_Out">
+    <wsdl:documentation />
+    <wsdl:operation name="SI_PERFILCAT_LaborSafety_RFC04_Out">
+      <wsdl:documentation />
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_SI_PERFILCAT_LaborSafety_RFC04_Out" />
+      </wsp:Policy>
+      <wsdl:input message="p1:MT_PERFILCAT_LaborSafety_RFC04" />
+      <wsdl:output message="p1:MT_PERFILCAT_LaborSafety_RFC04_Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SI_PERFILCAT_LaborSafety_RFC04_OutBinding" type="p1:SI_PERFILCAT_LaborSafety_RFC04_Out">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <wsdl:operation name="SI_PERFILCAT_LaborSafety_RFC04_Out">
+      <operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <wsdl:input>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SI_PERFILCAT_LaborSafety_RFC04_OutService">
+    <wsdl:port name="SI_PERFILCAT_LaborSafety_RFC04_OutPort" binding="p1:SI_PERFILCAT_LaborSafety_RFC04_OutBinding">
+      <address location="http://tkcsac2.tkcsa.com.br:50600/XISOAPAdapter/MessageServlet?senderParty=&amp;senderService=BS_APR_PT&amp;receiverParty=&amp;receiverService=&amp;interface=SI_PERFILCAT_LaborSafety_RFC04_Out&amp;interfaceNamespace=http://ternium.com.br/INT_FromERP_toAPR_PT&amp;version=3.0&amp;Sender.Service=BS_APR_PT&amp;Interface=http://ternium.com.br/INT_FromERP_toAPR_PT^SI_PERFILCAT_LaborSafety_RFC04_Out&amp;version=3.0&amp;Sender.Service=BS_APR_PT&amp;Interface=http%3A%2F%2Fternium.com.br%2FINT_FromERP_toAPR_PT%5ESI_PERFILCAT_LaborSafety_RFC04_Out" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

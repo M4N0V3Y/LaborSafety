@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F34A621C-16D4-4A68-9739-E45813173C51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ternium.LaborSafety.Integracao</RootNamespace>
+    <AssemblyName>Ternium.LaborSafety.Integracao</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\SAP_05_APR_SERVICE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Integracao.cs" />
+    <Compile Include="Interfaces\IIntegracao.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ternium.LaborSafety.Dominio\Ternium.LaborSafety.Dominio.csproj">
+      <Project>{3ade2e59-ec06-4bc3-81ab-02385db05b77}</Project>
+      <Name>Ternium.LaborSafety.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ternium.LaborSafety.Persistencia\Ternium.LaborSafety.Persistencia.csproj">
+      <Project>{9f0d9bbe-226c-4b0a-acb3-41b361190e1d}</Project>
+      <Name>Ternium.LaborSafety.Persistencia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ternium.LaborSafety.Utils\Ternium.LaborSafety.Utils.csproj">
+      <Project>{434b5c6f-f67f-4e4f-81b6-54c5bf0b0cac}</Project>
+      <Name>Ternium.LaborSafety.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SAP_05_APR_SERVICE\" />
+    <WCFMetadataStorage Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\" />
+    <WCFMetadataStorage Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\" />
+    <WCFMetadataStorage Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\" />
+    <WCFMetadataStorage Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\Ternium.LaborSafety.Integracao.SAP_01_DISCIPLINA_SERVICE.DT_CARACT_LaborSafety_RFC01_ResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\Ternium.LaborSafety.Integracao.SAP_01_DISCIPLINA_SERVICE.SI_CARACT_LaborSafety_RFC01_OutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\Ternium.LaborSafety.Integracao.SAP_02_ATIVIDADE_PADRAO_SERVICE.DT_CHAVEMOD_LaborSafety_RFC02_ResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\Ternium.LaborSafety.Integracao.SAP_02_ATIVIDADE_PADRAO_SERVICE.SI_CHAVEMOD_LaborSafety_RFC02_OutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\Ternium.LaborSafety.Integracao.SAP_03_LOCAL_INSTALACAO_SERVICE.DT_LOCALINST_LaborSafety_RFC03_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\Ternium.LaborSafety.Integracao.SAP_03_LOCAL_INSTALACAO_SERVICE.SI_LOCALINST_LaborSafety_RFC03_OutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\Ternium.LaborSafety.Integracao.SAP_04_PERFIL_CATALOGO_SERVICE.DT_ORDEMPM_LaborSafety_RFC05_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\Ternium.LaborSafety.Integracao.SAP_04_PERFIL_CATALOGO_SERVICE.SI_ORDEMPM_LaborSafety_RFC05_OutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_05_APR_SERVICE\SI_PERFILCAT_LaborSafety_RFC04_Out.wsdl" />
+    <None Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\SI_CHAVEMOD_LaborSafety_RFC02_Out.wsdl" />
+    <None Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\SI_CARACT_LaborSafety_RFC01_Out.wsdl" />
+    <None Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\SI_LOCALINST_LaborSafety_RFC03_Out.wsdl" />
+    <None Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\SI_ORDEMPM_LaborSafety_RFC05_Out.wsdl" />
+    <None Include="Connected Services\SAP_05_APR_SERVICE\Ternium.LaborSafety.Integracao.SAP_05_APR_SERVICE.DT_PERFILCAT_LaborSafety_RFC04_ResponseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SAP_05_APR_SERVICE\Ternium.LaborSafety.Integracao.SAP_05_APR_SERVICE.SI_PERFILCAT_LaborSafety_RFC04_OutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_01_DISCIPLINA_SERVICE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_02_ATIVIDADE_PADRAO_SERVICE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_03_LOCAL_INSTALACAO_SERVICE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_04_PERFIL_CATALOGO_SERVICE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_05_APR_SERVICE\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_05_APR_SERVICE\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SAP_05_APR_SERVICE\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
