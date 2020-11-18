@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9F0D9BBE-226C-4B0A-ACB3-41B361190E1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LaborSafety.Persistencia</RootNamespace>
+    <AssemblyName>LaborSafety.Persistencia</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APROVADOR_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AREA.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATIVIDADE_PADRAO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOQUEIO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOQUEIO_LOCAL_INSTALACAO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBLaborSafetyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBLaborSafetyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBLaborSafetyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBLaborSafetyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBLaborSafetyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBA_INDEXJOB.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBA_INDEXJOB_ANT.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISCIPLINA.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISPOSITIVO_BLOQUEIO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DURACAO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI_RISCO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI_RISCO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI_RISCO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI_RISCO_RASCUNHO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI_RISCO_RASCUNHO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPI_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXECUTANTE_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCIONALIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNCIONALIDADE_TELA.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IDbLaborSafetyEntities.cs" />
+    <Compile Include="Interfaces\IAprPersistencia.cs" />
+    <Compile Include="Interfaces\IAtividadePadraoPersistencia.cs" />
+    <Compile Include="Interfaces\IBloqueioPersistencia.cs" />
+    <Compile Include="Interfaces\IEPIRiscoInventarioAtividadePersistencia.cs" />
+    <Compile Include="Interfaces\IEPIRiscoInventarioAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\IEPIPersistencia.cs" />
+    <Compile Include="Interfaces\IDisciplinaPersistencia.cs" />
+    <Compile Include="Interfaces\IDuracaoPersistencia.cs" />
+    <Compile Include="Interfaces\IFuncionalidadesPersistencia.cs" />
+    <Compile Include="Interfaces\IIntegracaoPersistencia.cs" />
+    <Compile Include="Interfaces\IInventariosAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\IInventariosAtividadePersistencia.cs" />
+    <Compile Include="Interfaces\ILocalInstalacaoPersistencia.cs" />
+    <Compile Include="Interfaces\ILogAprPersistencia.cs" />
+    <Compile Include="Interfaces\ILogInventarioAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\ILogInventarioAtividadePersistencia.cs" />
+    <Compile Include="Interfaces\ILogPerfilFuncionalidadePersistencia.cs" />
+    <Compile Include="Interfaces\IMapeamentoLocalInventarioAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\INrInventarioAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\INrPersistencia.cs" />
+    <Compile Include="Interfaces\IOperacaoAprPersistencia.cs" />
+    <Compile Include="Interfaces\IPerfilCatalogoPersistencia.cs" />
+    <Compile Include="Interfaces\IPerfisPersistencia.cs" />
+    <Compile Include="Interfaces\IPesoPersistencia.cs" />
+    <Compile Include="Interfaces\IPessoaPersistencia.cs" />
+    <Compile Include="Interfaces\IProbabilidadePersistencia.cs" />
+    <Compile Include="Interfaces\IRascunhoAprPersistencia.cs" />
+    <Compile Include="Interfaces\IRascunhoInventarioAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\IRascunhoInventarioAtividadePersistencia.cs" />
+    <Compile Include="Interfaces\IRiscoInventarioAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\IRiscoPersistencia.cs" />
+    <Compile Include="Interfaces\ISeveridadePersistencia.cs" />
+    <Compile Include="Interfaces\IAmbientePersistencia.cs" />
+    <Compile Include="Interfaces\ITelaPersistencia.cs" />
+    <Compile Include="INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCAL_A_BLOQUEAR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCAL_INSTALACAO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCAL_INSTALACAO_INVENTARIO_AMBIENTE_HISTORICO_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE_HISTORICO_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCAL_INSTALACAO_RASCUNHO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_OPERACAO_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_PERFIL_FUNCIONALIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_RISCO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_RISCO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOG_TIPO_OPERACAO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NR_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NR_RASCUNHO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPERACAO_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERFIL.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERFIL_CATALOGO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERFIL_FUNCIONALIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PESO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PESSOA.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROBABILIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RASCUNHO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RASCUNHO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RESPONSAVEL_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RESPONSAVEL_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISCO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISCO_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISCO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISCO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISCO_RASCUNHO_INVENTARIO_AMBIENTE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RISCO_RASCUNHO_INVENTARIO_ATIVIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\AprPersistencia.cs" />
+    <Compile Include="Servicos\AtividadePadraoPersistencia.cs" />
+    <Compile Include="Servicos\BloqueioPersistencia.cs" />
+    <Compile Include="Servicos\EPIRiscoInventarioAtividadePersistencia.cs" />
+    <Compile Include="Servicos\EPIRiscoInventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\EPIPersistencia.cs" />
+    <Compile Include="Servicos\DisciplinaPersistencia.cs" />
+    <Compile Include="Servicos\DuracaoPersistencia.cs" />
+    <Compile Include="Servicos\FuncionalidadePersistencia.cs" />
+    <Compile Include="Servicos\IntegracaoPersistencia.cs" />
+    <Compile Include="Servicos\InventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\InventarioAtividadePersistencia.cs" />
+    <Compile Include="Servicos\LocalInstalacaoPersistencia.cs" />
+    <Compile Include="Servicos\LogAprPersistencia.cs" />
+    <Compile Include="Servicos\LogInventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\LogInventarioAtividadePersistencia.cs" />
+    <Compile Include="Servicos\LogPerfilFuncionalidadePersistencia.cs" />
+    <Compile Include="Servicos\MapeamentoLocalInventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\NrInventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\NrPersistencia.cs" />
+    <Compile Include="Servicos\OperacaoAprPersistencia.cs" />
+    <Compile Include="Servicos\PerfilCatalogoPersistencia.cs" />
+    <Compile Include="Servicos\PerfisPersistencia.cs" />
+    <Compile Include="Servicos\PesoPersistencia.cs" />
+    <Compile Include="Servicos\PessoaPersistencia.cs" />
+    <Compile Include="Servicos\ProbabilidadePersistencia.cs" />
+    <Compile Include="Servicos\RascunhoAprPersistencia.cs" />
+    <Compile Include="Servicos\RascunhoInventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\RascunhoInventarioAtividadePersistencia.cs" />
+    <Compile Include="Servicos\RiscoInventarioAmbientePersistencia.cs" />
+    <Compile Include="Servicos\RiscoPersistencia.cs" />
+    <Compile Include="Servicos\SeveridadePersistencia.cs" />
+    <Compile Include="Servicos\AmbientePersistencia.cs" />
+    <Compile Include="Servicos\TelaPersistencia.cs" />
+    <Compile Include="SEVERIDADE.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STATUS_APR.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TAG_KKS_BLOQUEIO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TELA.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_ENERGIA_BLOQUEIO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TIPO_RISCO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIO.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USUARIO_PERFIL.cs">
+      <DependentUpon>DBLaborSafetyModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LaborSafety.Dominio\LaborSafety.Dominio.csproj">
+      <Project>{3ADE2E59-EC06-4BC3-81AB-02385DB05B77}</Project>
+      <Name>LaborSafety.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LaborSafety.Utils\LaborSafety.Utils.csproj">
+      <Project>{434B5C6F-F67F-4E4F-81B6-54C5BF0B0CAC}</Project>
+      <Name>LaborSafety.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DBLaborSafetyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBLaborSafetyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBLaborSafetyModel.edmx.diagram">
+      <DependentUpon>DBLaborSafetyModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBLaborSafetyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBLaborSafetyModel.edmx</DependentUpon>
+      <LastGenOutput>DBLaborSafetyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBLaborSafetyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBLaborSafetyModel.edmx</DependentUpon>
+      <LastGenOutput>DBLaborSafetyModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
