@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3ADE2E59-EC06-4BC3-81AB-02385DB05B77}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>APRPT.Dominio</RootNamespace>
+    <AssemblyName>APRPT.Dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Modelos\AdministracaoPerfilModelo.cs" />
+    <Compile Include="Modelos\AnexoModelo.cs" />
+    <Compile Include="Modelos\AprDelecaoComLogModelo.cs" />
+    <Compile Include="Modelos\AreaModelo.cs" />
+    <Compile Include="Modelos\BloqueioModelo.cs" />
+    <Compile Include="Modelos\DadosMapaBloqueioAprModelo.cs" />
+    <Compile Include="Modelos\DispositivoBloqueioModelo.cs" />
+    <Compile Include="Modelos\EPIRiscoRascunhoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\EPIRiscoRascunhoInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\EPIRiscoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\EPIRiscoInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\Exportacao\DadosExportacaoAmbienteModelo.cs" />
+    <Compile Include="Modelos\Exportacao\DadosExportacaoAtividadeModelo.cs" />
+    <Compile Include="Modelos\FiltroUnicoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\InventarioAtividadeDelecaoComLogModelo.cs" />
+    <Compile Include="Modelos\InventarioAmbienteDelecaoComLogModelo.cs" />
+    <Compile Include="Modelos\LocalABloquearModelo.cs" />
+    <Compile Include="Modelos\RascunhoAprModelo.cs" />
+    <Compile Include="Modelos\AprModelo.cs" />
+    <Compile Include="Modelos\AprovadorAprModelo.cs" />
+    <Compile Include="Modelos\ArquivoModelo.cs" />
+    <Compile Include="Modelos\AtividadeOperacaoModelo.cs" />
+    <Compile Include="Modelos\AtividadePadraoModelo.cs" />
+    <Compile Include="Modelos\DadosAprModelo.cs" />
+    <Compile Include="Modelos\EPIRiscoRascunhoModelo.cs" />
+    <Compile Include="Modelos\Exportacao\DadosExportacaoAprModelo.cs" />
+    <Compile Include="Modelos\FiltroAprModelo.cs" />
+    <Compile Include="Modelos\IntegracaoModelo.cs" />
+    <Compile Include="Modelos\EPIModelo.cs" />
+    <Compile Include="Modelos\DisciplinaModelo.cs" />
+    <Compile Include="Modelos\DuracaoModelo.cs" />
+    <Compile Include="Modelos\ExecutanteAprModelo.cs" />
+    <Compile Include="Modelos\FiltroInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\FiltroInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\FolhaAnexoAprModelo.cs" />
+    <Compile Include="Modelos\FuncionalidadeModelo.cs" />
+    <Compile Include="Modelos\FuncionalidadesPor8idModelo.cs" />
+    <Compile Include="Modelos\FuncionalidadesTelaModelo.cs" />
+    <Compile Include="Modelos\LocalInstalacaoRascunhoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\NrRascunhoInventarioAmbienteModelo .cs" />
+    <Compile Include="Modelos\RascunhoInventarioAmbienteModelo .cs" />
+    <Compile Include="Modelos\InventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\RascunhoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\InventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\LocalInstalacaoFiltroModelo.cs" />
+    <Compile Include="Modelos\LocalInstalacaoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\LocalInstalacaoModelo.cs" />
+    <Compile Include="Modelos\NrInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\NrModelo.cs" />
+    <Compile Include="Modelos\OperacaoAprModelo.cs" />
+    <Compile Include="Modelos\PerfilCatalogoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\PerfilCatalogoModelo.cs" />
+    <Compile Include="Modelos\PerfilFuncionalidadeModelo.cs" />
+    <Compile Include="Modelos\PerfilModelo.cs" />
+    <Compile Include="Modelos\PesoModelo.cs" />
+    <Compile Include="Modelos\PessoaModelo.cs" />
+    <Compile Include="Modelos\ProbabilidadeModelo.cs" />
+    <Compile Include="Modelos\ResponsavelInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\ResponsavelInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\RetornoBloqueioAgrupadoModelo.cs" />
+    <Compile Include="Modelos\RetornoStatusOrdens.cs" />
+    <Compile Include="Modelos\RiscoAprModelo.cs" />
+    <Compile Include="Modelos\RiscoRascunhoInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\RiscoInventarioAmbienteModelo.cs" />
+    <Compile Include="Modelos\RiscoRascunhoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\RiscoInventarioAtividadeModelo.cs" />
+    <Compile Include="Modelos\RiscoModelo.cs" />
+    <Compile Include="Modelos\RiscoTotalAmbienteModelo.cs" />
+    <Compile Include="Modelos\RiscoTotalAprModelo.cs" />
+    <Compile Include="Modelos\RiscoTotalAtividadeModelo.cs" />
+    <Compile Include="Modelos\SAP\APRSAPModelo.cs" />
+    <Compile Include="Modelos\SAP\APRSAPResponse.cs" />
+    <Compile Include="Modelos\SAP\AtividadePadraoSAPModelo.cs" />
+    <Compile Include="Modelos\SAP\AtividadePadraoSAPResponse.cs" />
+    <Compile Include="Modelos\SAP\DisciplinaResponse.cs" />
+    <Compile Include="Modelos\SAP\DisciplinaSAPModelo.cs" />
+    <Compile Include="Modelos\SAP\LocalInstalacaoSAPModelo.cs" />
+    <Compile Include="Modelos\SAP\LocalInstalacaoSAPResponse.cs" />
+    <Compile Include="Modelos\SAP\PerfilCatalogoSAPModelo.cs" />
+    <Compile Include="Modelos\SAP\PerfilCatalogoSAPResponse.cs" />
+    <Compile Include="Modelos\SeveridadeModelo.cs" />
+    <Compile Include="Modelos\AmbienteModelo.cs" />
+    <Compile Include="Modelos\Tag_Kks_Modelo.cs" />
+    <Compile Include="Modelos\TelaModelo.cs" />
+    <Compile Include="Modelos\TipoEnergiaBloqueioModelo.cs" />
+    <Compile Include="Modelos\TipoRiscoModelo.cs" />
+    <Compile Include="Modelos\Usuario8IDModelo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modelos\Logs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
