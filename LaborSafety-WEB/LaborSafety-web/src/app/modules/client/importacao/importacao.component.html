@@ -1,0 +1,242 @@
+<!-- TÍTULO DA PÁGINA -->
+<title>
+  Importação/Exportação de dados
+</title>
+<div class="row">
+  <div class="title" style="margin: 0 1em 0 1em">
+    Importação/Exportação de dados
+  </div>
+</div>
+
+
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div class="basediv3" style="margin: 0 1em 1em 1em">
+
+    <div class="title">
+      Importar arquivo
+      <mat-icon class="treeview-icon" style="font-size: 18px;"
+        matTooltip="Importação de arquivos .csv, .xls ou .xlsx de um diretório da sua máquina local."
+        matTooltipPosition="after" matTooltipClass="tooltip-primary">help_outline</mat-icon>
+    </div>
+
+    <mat-card style="width: 100%; margin: 1em 0 1em 0">
+      <div class="basediv3" style="margin: 0 1em 0 1em">
+
+        <div class="basechild4">
+          <div class="field-titles">
+            TIPO DE INVENTÁRIO
+          </div>
+          <mat-form-field class="ajusteSelect" appearance="outline">
+            <mat-label>Selecione o tipo de inventário</mat-label>
+            <mat-select appearance="outline" matNativeControl required id="select"
+              [(ngModel)]="selectedOptionImportacao">
+              <mat-option value="Ambiente">Ambiente</mat-option>
+              <mat-option value="Atividade">Atividade</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="basechild4">
+          <div class="centered-in-div">
+            <input type="file" class="hide-input" accept=".csv, .xls, .xlsx"
+              name="hidden-input-file" id="hidden-input-file" (change)="selecionarArquivo($event)">
+            <label for="hidden-input-file">SELECIONAR ARQUIVO</label>
+          </div>
+        </div>
+
+
+        <div class="basechild4">
+          <div class="centered-in-div">
+            <button mat-button [disabled]="desabilitarButtonUpload || !selectedOptionImportacao || !file"
+              (click)="importar()" class="btn">
+              <mat-icon>arrow_downward</mat-icon>
+              Importar
+            </button>
+          </div>
+          <div style="margin-top: 3em;">
+            <div>Arquivo selecionado:
+              {{ (file) ? ( (file.target)? ((file.target.files[0])? file.target.files[0].name : ' ' ) : ' ' ) : ' ' }}
+            </div>
+          </div>
+        </div>
+       
+        <div class="basechild4">
+          <button mat-button (click)="baixarModelo()"
+            class="btn centered-in-div">
+            Modelo de importação
+          </button>   
+        </div>
+        <div *ngIf="desabilitarButtonDownload" style="margin-top: 2%;">
+          <mat-icon class="treeview-icon" style="font-size: 20px;"
+          matTooltip="Usuario sem permissão para baixar o modelo"
+          matTooltipPosition="after" matTooltipClass="tooltip-primary">help_outline</mat-icon>  
+        </div>
+        
+
+
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+
+<!--EXPORTAÇÃO -->
+
+
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div class="basediv3" style="margin: 0 1em 1em 1em">
+
+    <div class="title">
+      Exportar arquivo
+    </div>
+    <!-- Tudo está como disabled! -->
+    <mat-card style="width: 100%; margin: 1em 0 1em 0">
+
+      <div class="basechild4">
+        <div class="field-titles">
+          TIPO DE INVENTÁRIO
+        </div>
+      <mat-form-field style="width: 25%;" appearance="outline">
+        <mat-label>Selecione o tipo de inventário</mat-label>
+        <mat-select matNativeControl required id="select" [(ngModel)]="selectedOptionExportacao" (selectionChange)="changeTipoInvntario()">
+          <mat-option value="Ambiente">Ambiente</mat-option>
+          <mat-option value="Atividade">Atividade</mat-option>
+          <!--<mat-option value="APR">APR</mat-option>-->
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+      <div *ngIf="selectedOptionExportacao!=undefined">
+          <div *ngIf="selectedOptionExportacao=='Ambiente'; else divAtividade" >
+            <div class="basediv">
+              <div *ngFor="let filtro of filtrosAmbiente; let i=index" class="basechild7">
+                <mat-expansion-panel style="width: 95%; margin: 1em 0 1em 0;">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title> {{filtro.title}} </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <cdk-virtual-scroll-viewport itemSize="0" class="example-viewport">
+                    <div *cdkVirtualFor="let item of filtro.itens" class="example-item">
+                      <mat-checkbox class="checkbox" (click)="adicionarFiltros(filtro.title, item)" [(ngModel)]="item.checked" [checked]="item.checked">
+                        <div>{{item.Nome}}</div>
+                      </mat-checkbox>
+                      <br>
+                    </div>
+                  </cdk-virtual-scroll-viewport>
+                </mat-expansion-panel> 
+              </div>
+            </div>
+            <div class="basediv" style="margin: 1em 1em 1em 1em">
+              <div class="field-titles">
+                Norma Regulamentadora
+              </div>
+              <mat-checkbox style="margin: 0 0 0 1em" [disabled]="desabilitarButtonEdicao" [(ngModel)]="nrNaoAplicavel" [checked]="nrNaoAplicavel"
+                (change)="changeNR()">
+                NR Não Aplicável
+              </mat-checkbox>
+            </div>
+        
+            <div class="mat-elevation-z2" style="margin: 1em 1em 1em 1em">
+        
+              <div class="basediv3" style="margin: 1em 1em 1em 1em">
+        
+                <mat-expansion-panel style="width: 100%;" [expanded]="expanded">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="field-titles">
+                        SELECIONAR NORMA(S)
+                      </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <ng-container>
+                    <div class="row" id=NrScreen>
+                      <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+                        <div  *cdkVirtualFor="let NR of todasNRs; let i = index " class="example-item col l12 m12 s12">
+                          <div class="col l12 m12 s12" *ngIf="i !== 0">
+                            <br>
+                            <mat-checkbox class="checkbox" [disabled]="desabilitarButtonEdicao" (change)="changeCheckBox()"
+                              [(ngModel)]="NR.checked" [checked]="NR.checked">
+                              <p>{{NR.Codigo}}--{{NR.Nome}}</p>
+                            </mat-checkbox>
+                          </div>
+                          <br>
+                        </div>
+                      </cdk-virtual-scroll-viewport>
+                    </div>
+                  </ng-container>
+                </mat-expansion-panel>
+        
+              </div>
+        
+        
+            </div> 
+
+
+          </div>
+          
+      
+        <div style="margin: 0 1em 0 1em">
+          <div class="row flexitemFull">
+            <p class="field-titles linedistance">EPIs</p>
+            <app-lista-epi (episEnviadas)="retornaSelecionadosEpi($event)"></app-lista-epi>
+          </div>
+          <div class="row">
+            <div class="field-titles">LOCAL DE INSTALAÇÃO</div>
+          </div>
+          <div class="treediv">
+            <cdk-virtual-scroll-viewport itemSize="50" class="scroll-viewport mat-elevation-z2">
+                  <app-treeview-li  [hasPermission]="false"
+                                    (selectedNodes)="retornaSelecionados($event)">
+                  </app-treeview-li>
+            </cdk-virtual-scroll-viewport>
+          </div>
+        </div>
+        <mat-icon class="treeview-icon" style="font-size: 18px;"
+        matTooltip="Função em desenvolvimento, agradecemos a compreensão."
+        matTooltipPosition="after" matTooltipClass="tooltip-primary">help_outline</mat-icon>
+        <button  mat-button style="margin: 1em" (click)="exportar()" class="btn">Exportar</button>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #divAtividade>
+  <div class="basediv" *ngIf="selectedOptionExportacao=='Atividade'; else divAPR">
+    <div *ngFor="let filtro of filtroAtividade; let i=index" class="basechild7">
+      <mat-expansion-panel style="width: 95%; margin: 1em 0 1em 0;"  >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+           {{filtro.title}} 
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
+          <div *cdkVirtualFor="let item of filtro.itens">
+            <mat-checkbox class="checkbox" name="{{item}}" value="{{item}}" (click)="adicionarFiltros(filtro.title, item)" [(ngModel)]="item.checked" [checked]="item.checked">
+              <p>{{item.Nome}}</p>
+            </mat-checkbox>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #divAPR>
+  <div class="basediv3" style="margin: 0 1em 0 1em">
+      <div *ngFor="let filtro of filtroApr; let i=index" class="basechild7">
+        <mat-expansion-panel style="width: 95%; margin: 1em 0 1em 0;">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{filtro.title}} </mat-panel-title>
+          </mat-expansion-panel-header>
+          <cdk-virtual-scroll-viewport itemSize="0" class="example-viewport">
+            <div *cdkVirtualFor="let item of filtro.itens" class="example-item">
+              <mat-checkbox class="checkbox" (click)="adicionarFiltros(filtro.title, item)" [(ngModel)]="item.checked" [checked]="item.checked">
+                <div>{{item.Nome}}</div>
+              </mat-checkbox>
+              <br>
+            </div>
+          </cdk-virtual-scroll-viewport>
+        </mat-expansion-panel> 
+      </div>
+  </div>
+</ng-template>

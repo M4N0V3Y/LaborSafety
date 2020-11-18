@@ -1,0 +1,262 @@
+<title>
+  Cadastro de Inventário de Atividade
+</title>
+<div id=page>
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <div class="title">
+        <button mat-button (click)="redirecionarTelaGestao()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        {{textoTitle}}
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8" style="margin: 1em">
+
+    <div style="margin: 1em 0 0 0">
+
+      <div class="row">
+        <div class="basediv2">
+          <div class="basechild3">
+            <p class="field-titles">DISCIPLINA</p>
+            <mat-form-field class="ajusteSelect" appearance="outline">
+              <mat-label>Selecionar Disciplina</mat-label>
+              <mat-select [disabled]="desabilitarButtonEdicao" required name="selectdisciplina"
+                [ngModel]="disciplinaSelecionada" (selectionChange)="selectFilters($event, 'disciplina')">
+                <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina">
+                  {{ disciplina.Nome }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="basechild3">
+            <p class="field-titles">ATIVIDADE</p>
+            <mat-form-field class="ajusteSelect" appearance="outline">
+              <mat-label>Selecionar Atividade</mat-label>
+              <mat-select [disabled]="desabilitarButtonEdicao" required name="selectatividade"
+                [ngModel]="atividadeSelecionada" (selectionChange)="selectFilters($event, 'atividade')">
+                <mat-option *ngFor="let atividade of atividades" [value]="atividade">
+                  {{ atividade.Nome }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="basechild3">
+            <p class="field-titles">PERFIL DE CATÁLOGO</p>
+            <mat-form-field class="ajusteSelect" appearance="outline">
+              <mat-label>Selecionar Perfil de Catálogo</mat-label>
+              <mat-select [disabled]="desabilitarButtonEdicao" required name="selectperfildecatalogo"
+                [ngModel]="perfilSelecionado" (selectionChange)="selectFilters($event, 'perfil')">
+                <mat-form-field class="removePadding" appearance="none" style="width: 100%; padding-right: 1em;">
+                  <div class="input-icons">
+                    <i class="icon">
+                      <mat-icon style="font-size: 34px;" matSuffix>search</mat-icon>
+                    </i>
+                    <input type="search" matInput placeholder="Pesquisar . . . "
+                           (keydown)="$event.stopPropagation()"
+                           (keyup)="perfilOnKey($event.target.value)" />
+                  </div>
+                </mat-form-field>
+                <mat-option>- - -</mat-option>
+                <mat-option *ngFor="let perfil of availableProfiles" [value]="perfil">
+                  {{ perfil.Codigo + ' - ' + perfil.Nome }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="basechild3">
+            <p class="field-titles">PESO FÍSICO</p>
+            <mat-form-field class="ajusteSelect" appearance="outline">
+              <mat-label>Selecionar Peso Físico</mat-label>
+              <mat-select [disabled]="desabilitarButtonEdicao" required name="selectpesofisico"
+                [ngModel]="pesoSelecionado" (selectionChange)="selectFilters($event, 'peso')">
+                <mat-option *ngFor="let peso of pesos" [value]="peso">
+                  {{ peso.Nome }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="basechild3">
+            <p class="field-titles">DURAÇÃO</p>
+            <mat-form-field class="ajusteSelect" appearance="outline">
+              <mat-label>Selecionar Duração</mat-label>
+              <mat-select [disabled]="desabilitarButtonEdicao" required name="selectduracao"
+                [ngModel]="duracaoSelecionada" (selectionChange)="selectFilters($event, 'duracao')">
+                <mat-option *ngFor="let duracao of duracoes" [value]="duracao">
+                  {{ duracao.Nome }}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-error *ngIf="animalControl.hasError('required')">Por favor selecione uma duração</mat-error>  -->
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin: 0 1em 0 1em">
+      <div class="row">
+        <div class="field-titles">
+          DESCRIÇÃO RESUMIDA DA ATIVIDADE
+        </div>
+      </div>
+      <div class="row">
+        <form>
+          <div class="full-width-textarea">
+            <textarea id=textareaDescricao cdkTextareaAutosize
+                      matInput
+                      maxlength="500"
+                      [disabled]="desabilitarButtonEdicao"
+                      [(ngModel)]="descricaotextArea"
+                      name="descricaotextArea">{{descricaotextArea}}
+            </textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div style="margin: 0 1em 0 1em">
+      <div class="row">
+        <div class="title">
+          Riscos
+        </div>
+      </div>
+      <div class="mat-elevation-z2">
+        <div style="margin: 1em 1em 0 1em">
+            <div class="row">
+              <mat-expansion-panel [expanded]="expanded">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="field-titles">
+                    RISCOS DO INVENTÁRIO
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form #editForm="ngForm">
+                  <mat-table #tableFisico [dataSource]="todosRiscosMapeados[0]" [trackBy]="trackBy">
+                    <ng-container>
+                      <ng-container matColumnDef="Risco">
+                        <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.Risco.Nome }} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="Severidade">
+                        <mat-header-cell *matHeaderCellDef> Severidade </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{ element.Severidade.Nome }} </mat-cell>
+                      </ng-container>
+                      <ng-container matColumnDef="Grau">
+                        <mat-header-cell *matHeaderCellDef> Grau </mat-header-cell>
+                        <mat-cell *matCellDef="let element" style="font-weight: 600; font-size: 20px;"
+                          [ngClass]="{ '1': 'greentext', '2': 'yellowtext', '3':'redtext', '4': 'blacktext' }[element.Grau]">
+                          {{ element.Grau }} </mat-cell>
+                      </ng-container>
+                      <!-- BOTÕES -->
+                      <ng-container matColumnDef="Controles">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let row; let i = index">
+                          <!-- CRIAR E DELETAR -->
+                          <div>
+                            <button mat-icon-button style="color: rgb(190,190,190)"
+                              (click)="editar(0, row, i)">
+                              <mat-icon>create_outline</mat-icon>
+                            </button>
+                            <button [disabled]="desabilitarButtonEdicao" mat-icon-button style="color: rgb(190,190,190)"
+                              (click)="deletar(0,i)">
+                              <mat-icon>delete_outline</mat-icon>
+                            </button>
+                          </div>
+                        </mat-cell>
+                      </ng-container>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+                  </mat-table>
+                </form>
+                <br>
+                <div class="row">
+                  <div class="col l12 m12 s12">
+                    <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side"
+                      (click)="adicionarRisco(1)">
+                      Adicionar Risco
+                      <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="margin: 0 1em 0 1em">
+      <div class="row">
+        <div class="field-titles">
+          OBSERVAÇÕES GERAIS
+        </div>
+      </div>
+      <div class="row">
+        <form>
+          <div class="full-width-textarea">
+            <textarea id=textarea cdkTextareaAutosize
+                      [disabled]="desabilitarButtonEdicao"
+                      maxlength="500"
+                      matInput
+                      [(ngModel)]="observacoestextArea"
+                      name="observacoestextArea">{{observacoestextArea}}
+            </textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div style="margin: 0 1em 0 1em">
+      <div class="row">
+        <div class="title" style="margin-bottom: 1em !important">
+          Local de instalação
+        </div>
+        <div class="treediv">
+          <cdk-virtual-scroll-viewport id=treeviewScreen itemSize="50" class="scroll-viewport mat-elevation-z2" style="margin-bottom: 2em;">
+            <div *ngIf="treeviewLoader" >
+                <div *ngIf="treeviewEnabled">
+                  <app-treeview-li  [hasPermission]="!desabilitarDesassociacaoTreeview"
+                                    [hasEditingPermission]="desabilitarButtonEdicao"
+                                    [hierarchyInput]="nodosSelecionadosTreeview"
+                                    [codPeso]="(pesoSelecionado) ? pesoSelecionado.CodPeso : null"
+                                    [codPerfil]="(perfilSelecionado)? perfilSelecionado.CodPerfilCatalogo : null" 
+                                    (selectedNodes)="retornaSelecionados($event)"
+                                    (isOperational)="retornaisOperational($event)">
+                  </app-treeview-li>
+                </div>
+            </div>
+          </cdk-virtual-scroll-viewport>
+        </div>
+      </div>
+      <div id=treeviewImpressao>
+        <div *ngFor="let local of inventarioAtualSalvo.LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE" class="treeviewImpressao">
+          <mat-checkbox checked=true>{{local.LocalInstalacao.Nome}}</mat-checkbox>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col l12 m12 s12">
+          <h5>
+            Risco Geral de Atividade: <span [ngClass]="{'1':'greentext', '2':'yellowtext', '3' : 'redtext', '4' : 'blacktext'}[maiorRiscoGeral]">{{maiorRiscoGeral}}</span>
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="basediv2" id="buttons">
+      <button class="basechild2 btn" mat-raised-button mat-raised-button *ngIf="isRascunho || isCadastro"  (click)="salvarComoRascunho()">SALVAR RASCUNHO</button>
+      <button class="basechild2 btn" mat-raised-button (click)="imprimir()" [disabled]="desabilitarButtonImpressao || isRascunho">
+        IMPRIMIR INVENTÁRIO
+      </button>
+      <button class="basechild2 btn" mat-raised-button (click)="baixarLog()" [disabled]="isRascunho || isCadastro">BAIXAR LOG</button> 
+      <button class="basechild2 btn" id=btnSalvar mat-raised-button [disabled]="desabilitarButtonEdicao" (click)="salvar()">{{textoBtn}}</button>
+      <button class="basechild2 btn" mat-raised-button [disabled]="desabilitarButtonExcluir"
+        (click)="deletarInventario()">Excluir</button>
+    </div>
+    <button id=imprimir [useExistingCss]="true" printSectionId="page" ngxPrint>
+      teste
+    </button>
+
+  </div>
+</div>

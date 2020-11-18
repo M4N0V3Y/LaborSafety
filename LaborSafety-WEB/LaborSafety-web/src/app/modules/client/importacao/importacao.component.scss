@@ -1,0 +1,77 @@
+p{
+    white-space: pre-line;
+    line-height: 150%;
+
+}
+
+.selects{
+ 
+    left: 10%;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 20%;
+    margin-top: 5%;   
+}
+
+.example-viewport {
+    height: 150px;
+    width: 100%;
+    
+   
+  }
+  
+  .ajusteSelect {
+    width : 100% !important;
+  }
+
+
+.detalhesTitulo{
+    color: red !important;
+}
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+.right-side {
+  float: right;
+}
+
+.btn {
+  width: 100%;
+  background-color: #F05D22;
+  color: white;
+  box-shadow:  3px;
+}
+
+.btn-disabled {
+  background-color: grey !important;
+  box-shadow:  3px;
+}
+
+.hide-input {
+    width: 0.1px !important;
+    height: 0.1px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    z-index: -1 !important;
+}
+
+.hide-input + label {
+  width: 100%;
+  text-align: center;
+  background-color: #F05D22;
+  color: white;
+  padding: 1vh 0 1vh 0;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 3px 4px 3px -4px black;
+  cursor: pointer;
+}
+

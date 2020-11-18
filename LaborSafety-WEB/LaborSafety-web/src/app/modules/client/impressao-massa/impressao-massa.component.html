@@ -1,0 +1,61 @@
+<title>Impressão em massa</title>
+
+<div class="row">
+  <div class="col l6 m6 s12">
+    <div class="title left-content">Impressão em massa</div>
+  </div>
+</div>
+
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div class="title row">Pesquisar</div>
+  <div class="field-titles row" style="margin: 1em">ORDEM DE MANUTENÇÃO</div>
+  <div class="row" style="margin: 0 1em 0 1em">
+      <div class="full-width-textarea">
+        <textarea cdkTextareaAutosize
+                  matInput
+                  [(ngModel)]="ordemTextArea">{{ordemTextArea}}
+        </textarea>
+      </div>
+  </div>
+  <div class="right-align">
+    <button style="margin-right: 1em;" mat-raised-button color="padraoPrimario">
+      VALIDAR ORDEM
+    </button>
+  </div>
+</div>
+
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div class="title row">Resultados da pesquisa</div>
+  <div class="mat-elevation-z2" style="margin: 1em">
+    <form #editForm="ngForm">
+      <mat-table [dataSource]="ordemDataSource">
+        <!-- COLUNAS -->
+        <div class="row">
+          <ng-container matColumnDef="Ordem">
+            <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+            <mat-cell *matCellDef="let ordem">{{ ordem.Nome }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Status">
+            <mat-header-cell *matHeaderCellDef>Descricao</mat-header-cell>
+            <mat-cell *matCellDef="let ordem">{{ ordem.Descricao }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Ações">
+            <mat-header-cell *matHeaderCellDef>Controles</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i = index">
+              <button mat-icon-button style="color: rgb(190,190,190)"
+                (click)="imprimirOM(row, i)">
+                <mat-icon>print</mat-icon> IMPRIMIR
+              </button>
+            </mat-cell>
+          </ng-container>
+
+        </div>
+        <mat-header-row *matHeaderRowDef="ordemColunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ordemColunas"></mat-row>
+      </mat-table>
+    </form>
+    <mat-paginator [pageSize]=10 (page)="finalizarEdicao()"></mat-paginator>
+  </div>
+</div>

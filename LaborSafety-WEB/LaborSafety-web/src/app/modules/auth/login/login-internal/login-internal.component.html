@@ -1,0 +1,61 @@
+<form class="form-login" (ngSubmit)="onSubmit()" name="loginForm" [formGroup]="loginForm">
+  <mat-card>
+    <mat-card-content>
+      <div class="row">
+        <div class="col s8 valign-wrapper" id="displayName"></div>
+        <div lclass="col s4">
+          <i class="medium material-icons">person</i>
+        </div>
+      </div>
+
+      <mat-form-field style="padding: 10px 0px 10px 0px" appearance="outline">
+        <mat-label for="8id">8.I.D.</mat-label>
+        <input  required
+                matInput
+                style="border: none !important; box-shadow: none !important; font-size: 16px !important"
+                appearance="none"
+                type="text"
+                id="8id"
+                class="validate"
+                title="8id"
+                formControlName="id" />
+      </mat-form-field>
+
+      <mat-form-field style="padding: 10px 0px 10px 0px" appearance="outline">
+        <mat-label for="8id">Senha</mat-label>
+        <input  required 
+                matInput 
+                style="border: none !important; box-shadow: none !important; font-size: 16px !important;"
+                appearance="none"
+                [type]="show ? 'text' : 'password'"
+                id="password"
+                title="password"
+                formControlName="password" />
+      </mat-form-field>
+      <p>
+        <span title="Clique para mostrar a senha" class="visibilityPass" (click)="showPassword()">
+          <mat-icon *ngIf="!show">visibility</mat-icon>
+          <mat-icon *ngIf="show">visibility_off</mat-icon>
+        </span>
+      </p>
+      <p>
+       <!-- <label>
+          <input type="checkbox" formControlName="remember" />
+          <span>Lembre-se de mim</span>
+        </label> -->
+      </p>
+    </mat-card-content>
+    <button style="width: 100%" type="submit" [disabled]="!loginForm || (loginForm.dirty && loginForm.invalid)"
+      class="waves-effect waves-light white btn-large amber-text text-darken-4">
+      Login
+    </button>
+    <span *ngIf="msgError" style="color: red" id="msg">{{
+            msgError
+          }}</span>
+  </mat-card>
+</form>
+<mat-card style="margin: 1em 0">
+  <p>
+    <button class="link amber-text text-darken-4" (click)="openPhonePopup()">Ainda não tem cadastro? Clique aqui!</button>
+  </p>
+</mat-card>

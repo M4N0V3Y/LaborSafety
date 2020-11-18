@@ -1,0 +1,114 @@
+<title>Gestão de APR</title>
+
+<div class="row">
+  <div class="col l12 m12 s12">
+    <div class="title">APR</div>
+  </div>
+
+  <div class="right-content">
+    <button [disabled]="!desabilitarButtonCadastro" mat-raised-button color="padraoPrimario"
+      (click)="redirecionarCadastro()" style="margin-right: 1em;">
+      NOVA APR
+    </button>
+    <button mat-raised-button color="padraoPrimario" (click)="baixarModelo()" style="margin-right: 1em;">
+      MODELO DE APR
+    </button>
+    <button mat-raised-button color="padraoPrimario" (click)="redirecionarMapa()" style="margin-right: 1em;">
+      MAPA DE BLOQUEIO
+    </button>
+    <button id="cadastrarButton"  mat-raised-button color="padraoPrimario"
+    (click)="gerarTodosLogs()">
+    GERAR TODOS LOGs
+  </button>
+  </div>
+</div>
+
+
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div class="basediv3" style="margin: 1em 1em 1em 1em">
+    <div class="title">
+      Pesquisar
+    </div>
+  </div>
+  <div class="basediv3" style="margin: 0 1em 0 1em">
+    <div class="basechild6">
+      <form>
+        <mat-label class="field-titles">NÚMERO DE SÉRIE</mat-label>
+        <input matInput maxlength="50" [(ngModel)]="numeroDeSerie" name="numeroDeSerie">
+      </form>
+    </div>
+
+    <div class="basechild6">
+      <form>
+        <mat-label class="field-titles">ORDEM DE MANUTENÇÃO</mat-label>
+        <input matInput maxlength="50" [(ngModel)]="ordemDeManutencao" name="ordemDeManutencao">
+      </form>
+    </div>
+  </div>
+
+
+  <div style="margin: 1em">
+    <div class="field-titles">
+      LOCAL DE INSTALAÇÃO
+    </div>
+    <div class="treediv">
+      <cdk-virtual-scroll-viewport itemSize="50" class="scroll-viewport mat-elevation-z2">
+        <app-treeview-li [hasPermission]="false" (selectedNodes)="retornaSelecionados($event)">
+        </app-treeview-li>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="right-content" mat-raised-button color="padraoPrimario" (click)="pesquisar()">
+      PESQUISAR APR
+    </button>
+  </div>
+
+</div>
+
+
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div class="row">
+    <div class="col l12 m12 s12">
+      <div class="title">Resultado da Pesquisa</div>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z2" style="margin: 0 1em 0 1em">
+    <form #editForm="ngForm">
+      <mat-table [dataSource]="dataSource">
+        <!-- COLUNAS -->
+        <div class="row">
+          <ng-container matColumnDef="coluna1">
+            <th mat-header-cell *matHeaderCellDef style="width: 98%;"> Nome da APR</th>
+            <td mat-cell *matCellDef="let apr">
+              <div class="col m8">
+                <div class="field-titles" id="resultado">
+                  {{ apr.NumeroSerie + ' - ' + apr.Descricao }}
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="coluna2">
+            <th mat-header-cell *matHeaderCellDef class="field-titles"> </th>
+            <td mat-cell *matCellDef="let apr">
+              <div class="col m2">
+                <button mat-icon-button class="abrir-btn" (click)="editar(apr)">
+                  ABRIR
+                  <mat-icon>chevron_right</mat-icon>
+                </button>
+
+              </div>
+
+            </td>
+          </ng-container>
+        </div>
+        <tr mat-header-row *matHeaderRowDef="Colunas"></tr>
+        <tr mat-row *matRowDef="let row; columns: Colunas"></tr>
+      </mat-table>
+    </form>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>

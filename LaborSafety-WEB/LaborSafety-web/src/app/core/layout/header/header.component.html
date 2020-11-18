@@ -1,0 +1,32 @@
+<mat-toolbar>
+  <button style="margin-right: 30px" aria-label="Toggle sidenav" mat-icon-button (click)="snav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/img/logo.svg" alt="" style="
+    width: auto !important;
+    height: auto !important;
+    max-width: 43px;" />
+  <span style="margin-left:6px">
+    Ternium
+  </span>
+  <div  class="" style="width:100%">
+    <div class="portal">
+      <h5 style="color:#767676">Portal Manutenção Segura</h5>
+    </div>
+    <div class="right-align">
+      <div style="margin: 0;" class="valign-wrapper row ">
+        <div class="col s12 l12 m12">
+          <mat-icon class="treeview-icon" style="font-size: 18px; margin: 0.75em;"
+          matTooltip="{{textoToolTip}}"
+          matTooltipPosition="after" matTooltipClass="tooltip-3">storage</mat-icon>
+          <div class="nome-usuario">{{user}} -- {{(tipoUser)?.GrupoAD}}<br>
+              <a href="#" (click)="logout()">
+                  Sair
+              </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

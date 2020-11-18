@@ -1,0 +1,63 @@
+
+ .small_card {
+    width: 25vw;
+
+  }
+  section.mat-elevation-z1 {
+    min-width: 96%;
+    padding: 11px;
+  }
+
+  .cardCheckboxes {
+    margin: 15px 0;
+    height: 45vh !important;
+    overflow-y: scroll;
+
+  }
+  
+  .ajusteSelect {
+    width : 100% !important;
+  }
+  .example-form {
+    width: 100%;
+  }
+ #resultado {
+   max-width: 120ch;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+ }
+ 
+  
+  .example-full-width {
+    width: 100%;
+    bottom: 9px;
+  }
+
+
+  .input-icons i { 
+    position: absolute;
+    padding: 4px 4px 4px calc(100% - 36px);
+} 
+  
+.input-icons { 
+    width: 100%; 
+    margin-bottom: 10px; 
+} 
+
+  
+.input-field { 
+    width: 100%; 
+    text-align: center; 
+} 
+
+input.mat-input-element {
+    padding-right: 7% !important;
+}
+
+.blinking-card {
+  animation: blink 0.3s;
+  animation-iteration-count: 2;
+}
+
+@keyframes blink { 50% { opacity: 0.35; }  }

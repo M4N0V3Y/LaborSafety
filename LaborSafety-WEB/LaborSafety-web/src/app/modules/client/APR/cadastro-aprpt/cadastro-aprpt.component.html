@@ -1,0 +1,487 @@
+<title>
+  Nova APR
+</title>
+
+<div class="row">
+    <div class="title">
+      <button mat-button (click)="redirecionarTelaGestao()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      Nova APR
+    </div>
+</div>
+
+<div id=page>
+ <!-- <div class="row">
+    <div class="right-align" style="margin-right: 1em">
+      <button mat-raised-button (click)="baixarModelo()" color="padraoPrimario">
+        MODELO DE APR
+      </button>
+    </div>
+  </div>-->
+
+  <div class="mat-elevation-z8" style="margin: 1em">
+    <div class="row" style="margin-top: 1em">
+      <div class="col l4 m4 s12">
+        <div class="field-titles">
+          NÚMERO DE SÉRIE
+        </div>
+          <input matInput maxlength="50" disabled [(ngModel)]="numeroDeSerie" name="numeroDeSerie"><h6 class="impressao">  {{numeroDeSerie}} </h6>
+      </div>
+      <div class="col l4 m4 s12">
+        <div class="field-titles">
+          ORDEM DE MANUTENÇÃO
+        </div>
+        <form>
+          <input matInput maxlength="50" [disabled]="desabilitarButtonEdicao" [(ngModel)]="OrdemManutencao" name="OrdemManutencao">
+          <h6 class="impressao">
+            {{OrdemManutencao}}
+          </h6>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l12 m12 s12">
+        <div class="field-titles">
+          DESCRIÇÃO RESUMIDA DA ATIVIDADE
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form class="col l12 m12 s12">
+        <div class="full-width-textarea">
+          <textarea id="textareaDescricao"
+                    cdkTextareaAutosize
+                    matInput
+                    maxlength="500"
+                    [disabled]="desabilitarButtonEdicao"
+                    [(ngModel)]="descricaoTextArea" name="descricaotextArea">{{descricaoTextArea}}
+          </textarea>
+        </div>
+      </form>
+    </div>
+
+    <div class="basediv3" style="margin: 1em 1em 1em 1em">
+      <div class="title">
+        Operação
+      </div>
+      <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side"
+        (click)="adicionarOperacao()">
+        Adicionar Operacao
+        <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+      </button>
+    </div>
+
+    <div class="row">
+      <mat-card style="margin: 1em">
+        <form #editForm="ngForm">
+          <mat-table #tableOperacao [dataSource]="todasOperacoes" [trackBy]="trackBy">
+            <ng-container>
+              <ng-container matColumnDef="Descrição">
+                <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.descricao}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Local de Instalação">
+                <mat-header-cell *matHeaderCellDef> Local de Instalação </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.localDeInstalacao.Nome}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Atividade">
+                <mat-header-cell *matHeaderCellDef> Atividade </mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.atividade.Nome}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Disciplina">
+                <mat-header-cell *matHeaderCellDef> Disciplina </mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.disciplina.Nome}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Risco">
+                <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                <mat-cell *matCellDef="let element"
+                  [ngClass]="{'baixo':element.riscoOperacao>=1,
+                    'medio':element.riscoOperacao>=4,'alto':element.riscoOperacao>=8, 'intoleravel':element.riscoOperacao>=16}">
+                  <b>{{element.riscoOperacao}}</b> </mat-cell>
+              </ng-container>
+              <!-- BOTÕES -->
+              <ng-container matColumnDef="Controles">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                  <!-- CRIAR E DELETAR -->
+                  <div>
+                    <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                      (click)="editarOperacao(row, i)">
+                      <mat-icon>create_outline</mat-icon>
+                    </button>
+                    <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                      (click)="deletarOperacao(i)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </mat-cell>
+              </ng-container>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+          </mat-table>
+        </form>
+      </mat-card>
+    </div>
+
+
+    <div class="basediv3" style="margin: 1em 1em 1em 1em">
+      <div class="title">
+        Executor
+      </div>
+      <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side"
+        (click)="adicionarExecutor()">
+        Adicionar Executor
+        <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+      </button>
+    </div>
+
+    <div class="row">
+      <mat-card style="margin: 1em">
+        <form #editForm="ngForm">
+          <mat-table #tableExecutor [dataSource]="todosExecutores" [trackBy]="trackBy">
+            <ng-container>
+              <ng-container matColumnDef="Matricula">
+                <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Matricula}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Nome">
+                <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Nome}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="CPF">
+                <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.CPF}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Telefone">
+                <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Telefone}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Empresa">
+                <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Empresa}} </mat-cell>
+              </ng-container>
+              <!-- BOTÕES -->
+              <ng-container matColumnDef="Controles">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                  <!-- CRIAR E DELETAR -->
+                  <div>
+                    <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                      (click)="editarExecutor(row, i)">
+                      <mat-icon>create_outline</mat-icon>
+                    </button>
+                    <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                      (click)="deletarExecutor(i)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </mat-cell>
+              </ng-container>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumnsPessoa"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumnsPessoa"> </mat-row>
+          </mat-table>
+        </form>
+      </mat-card>
+    </div>
+
+
+    <div class="basediv3" style="margin: 1em 1em 1em 1em">
+      <div class="title">
+        Aprovador
+      </div>
+      <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side"
+        (click)="adicionarAprovador()">
+        Adicionar Aprovador
+        <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+      </button>
+    </div>
+
+    <div class="row">
+      <mat-card style="margin: 1em">
+        <form #editForm="ngForm">
+          <mat-table #tableAprovador [dataSource]="todosAprovadores" [trackBy]="trackBy">
+            <ng-container>
+              <ng-container matColumnDef="Matricula">
+                <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Matricula}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Nome">
+                <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Nome}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="CPF">
+                <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.CPF}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Telefone">
+                <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Telefone}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Empresa">
+                <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Empresa}} </mat-cell>
+              </ng-container>
+              <!-- BOTÕES -->
+              <ng-container matColumnDef="Controles">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                  <!-- CRIAR E DELETAR -->
+                  <div>
+                    <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                      (click)="editarAprovador(row, i)">
+                      <mat-icon>create_outline</mat-icon>
+                    </button>
+                    <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                      (click)="deletarAprovador(i)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                  </div>
+                </mat-cell>
+              </ng-container>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumnsPessoa"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumnsPessoa"> </mat-row>
+          </mat-table>
+        </form>
+      </mat-card>
+    </div>
+
+
+
+    <!--  <div class="row">
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                OPERAÇÃO
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableOperacao [dataSource]="todasOperacoes" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Descrição">
+                    <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.descricao}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Local de Instalação">
+                    <mat-header-cell *matHeaderCellDef> Local de Instalação </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.localDeInstalacao.nome}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Atividade">
+                    <mat-header-cell *matHeaderCellDef> Atividade </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.atividade.Nome}}  </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Disciplina">
+                      <mat-header-cell *matHeaderCellDef> Disciplina </mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{element.disciplina.Nome}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Risco">
+                    <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                    <mat-cell *matCellDef="let element" [ngClass]="{'baixo':element.riscoOperacao>=1,
+                    'medio':element.riscoOperacao>=4,'alto':element.riscoOperacao>=8, 'intoleravel':element.riscoOperacao>=16}"> <b>{{element.riscoOperacao}}</b> </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)" (click)="editarOperacao(row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)" (click)="deletarOperacao(i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side" (click)="adicionarOperacao()">
+                  Adicionar Operacao
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </div>
+
+        <div class="row">
+
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                EXECUTOR
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableExecutor [dataSource]="todosExecutores" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Matricula">
+                    <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Matricula}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Nome">
+                    <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Nome}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="CPF">
+                    <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.CPF}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Telefone">
+                      <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.Telefone}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Email">
+                    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Empresa">
+                    <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Empresa}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)" (click)="editarExecutor(row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)" (click)="deletarExecutor(i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumnsPessoa"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsPessoa"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side" (click)="adicionarExecutor()">
+                  Adicionar Executor
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </div>
+
+
+        <div class="row">
+
+          <mat-expansion-panel [expanded]=expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                APROVADOR
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableAprovador [dataSource]="todosAprovadores" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Matricula">
+                    <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Matricula}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Nome">
+                    <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Nome}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="CPF">
+                    <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.CPF}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Telefone">
+                      <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.Telefone}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Email">
+                    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Empresa">
+                    <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Empresa}} </mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)" (click)="editarAprovador(row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)" (click)="deletarAprovador(i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumnsPessoa"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsPessoa"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side" (click)="adicionarAprovador()">
+                  Adicionar Risco
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </div> -->
+
+    <div class="row" style="margin-left: -11.25px;">
+      <div class="col l6 m6 s6 left-align">
+        <button mat-button class="btn" [disabled]="desabilitarButtonImpressao" (click)="popUpImpressao()">
+          <mat-icon>local_printshop</mat-icon>
+          gerar arquivo de impressão (APR)
+        </button>
+        <button mat-button class="btn" (click)="baixarLog()" [disabled]="isCadastro">
+          <mat-icon>save_alt</mat-icon>
+          GERAR LOG
+        </button>
+      </div>
+
+      <div class="col l6 m6 s6 right-align">
+        <button mat-raised-button color="padraoPrimario" [disabled]="desabilitarButtonEdicao" (click)="inserir()">
+          SALVAR
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

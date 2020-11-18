@@ -1,0 +1,22 @@
+.body {
+  background: url("/assets/img/ilustracao_login.svg") no-repeat 42vw 12vh, #efefef url("../../../../assets/img/fundo.svg") no-repeat;
+  background-size: auto, 100%, auto;
+  height: 100%;
+}
+
+.login-logo {
+  max-width: 110px !important;
+}
+
+.login-texto {
+  position: absolute;
+  bottom: 50px;
+  margin-left: 50px;
+  font-size: 30px;
+  max-width: 200px;
+  color: #333 !important;
+}
+
+.login-container {
+  min-width: 90% !important;
+}

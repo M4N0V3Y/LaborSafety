@@ -1,0 +1,164 @@
+<title>Gestão de Invetário de Atividade</title>
+
+<div class="col12">
+  <div class="row">
+    <div class="col l6 m6 s12">
+      <div class="title left-content">Inventário de Atividade</div>
+    </div>
+    <button id="cadastrarButton" class="right-content" mat-raised-button color="padraoPrimario"
+      (click)="gerarTodosLogs()">
+      GERAR TODOS LOGs
+    </button>
+    <button [disabled]="desabilitarButtonCadastro" id="cadastrarButton" class="right-content" mat-raised-button
+      color="padraoPrimario" (click)="redirecionarTelaCadastro()"> CADASTRAR INVENTÁRIO
+    </button>
+
+  </div>
+
+  <div class="mat-elevation-z8" style="margin: 1em">
+    <div class="row">
+      <div class="col l12 m12 s12">
+        <div class="title">Pesquisar</div>
+      </div>
+    </div>
+    <div style="margin: 0 0 0 1em">
+      <div class="row basediv4">
+
+        <div class="basechild4">
+          <h6 class="field-titles">DISCIPLINA</h6>
+          <mat-form-field class="ajusteSelect" appearance="outline">
+            <mat-label>Selecionar Disciplina</mat-label>
+            <mat-select name="tipo" (selectionChange)="selectFilters($event, 'disciplina')">
+              <mat-option>- - -</mat-option>
+              <mat-option *ngFor="let discip of disciplinas" [value]="discip">{{ discip.Nome }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="disciplinaControl.hasError('required')">Por favor selecione uma disciplina</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="basechild4">
+          <h6 class="field-titles">ATIVIDADE</h6>
+          <mat-form-field class="ajusteSelect" appearance="outline">
+            <mat-label>Selecionar Atividade</mat-label>
+            <mat-select name="tipo" (selectionChange)="selectFilters($event, 'atividade')">
+              <mat-option>- - -</mat-option>
+              <mat-option *ngFor="let atv of atividades" [value]="atv"> {{ atv.Nome }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="atividadeControl.hasError('required')">Por favor selecione uma disciplina</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="basechild4">
+          <h6 class="field-titles">PERFIL DE CATÁLOGO</h6>
+          <mat-form-field class="ajusteSelect" appearance="outline">
+            <mat-label>Selecionar Perfil de Catalogo</mat-label>
+            <mat-select name="selectperf" (selectionChange)="selectFilters($event, 'perfil')">
+              <mat-form-field class="removePadding" appearance="none" style="width: 100%; padding-right: 1em;">
+                <div class="input-icons">
+                  <i class="icon">
+                    <mat-icon style="font-size: 34px;" matSuffix>search</mat-icon>
+                  </i>
+                  <input type="search" matInput placeholder="Pesquisar . . . "
+                         (keydown)="$event.stopPropagation()"
+                         (keyup)="perfilOnKey($event.target.value)" />
+                </div>
+              </mat-form-field>
+              <mat-option>- - -</mat-option>
+              <mat-option *ngFor="let perf of availableProfiles" [value]="perf">{{ perf.Codigo + ' - ' +  perf.Nome }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="perfilControl.hasError('required')">Por favor selecione uma disciplina</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="basechild4">
+          <h6 class="field-titles">PESO FÍSICO</h6>
+          <mat-form-field class="ajusteSelect" appearance="outline">
+            <mat-label>Selecionar Peso Fisico</mat-label>
+            <mat-select name="tipo" (selectionChange)="selectFilters($event, 'peso')">
+              <mat-option>- - -</mat-option>
+              <mat-option *ngFor="let peso of pesos" [value]="peso">{{ peso.Nome }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="pesoControl.hasError('required')">Por favor selecione uma disciplina</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div style="margin: 0 1em 0 0">
+        <div class="row">
+          <div class="field-titles">LOCAL DE INSTALAÇÃO</div>
+        </div>
+        <div class="treediv" *ngIf="treeviewEnabled">
+          <cdk-virtual-scroll-viewport itemSize="50" class="scroll-viewport mat-elevation-z2">
+            <app-treeview-li [codPeso]="(pesoSelecionado) ? pesoSelecionado.CodPeso : null"
+              [codPerfil]="(perfilSelecionado)? perfilSelecionado.CodPerfilCatalogo : null"
+              (selectedNodes)="retornaSelecionados($event)">
+            </app-treeview-li>
+          </cdk-virtual-scroll-viewport>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="right-content">
+        <mat-checkbox style="margin: 0 1em 0 1em;" [(ngModel)]="isRascunho" (change)="limparPesquisa()">
+          <p class="field-titles">RASCUNHO</p>
+        </mat-checkbox>
+        <button mat-raised-button color="padraoPrimario" (click)="pesquisar()">PESQUISAR INVENTÁRIO</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="mat-elevation-z8" style="margin: 1em">
+    <div class="row">
+      <div class="col l12 m12 s12">
+        <div class="title">Resultado da Pesquisa</div>
+      </div>
+    </div>
+
+    <div style="margin: 0 1em 0 1em">
+      <div class="mat-elevation-z2">
+        <form #editForm="ngForm">
+          <mat-table [dataSource]="inventarioDataSource">
+            <!-- COLUNAS -->
+            <div class="row">
+              <ng-container matColumnDef="coluna1">
+                <th mat-header-cell *matHeaderCellDef style="width: 98%;"> Nome do inventário de atividade</th>
+                <td mat-cell *matCellDef="let inventario">
+                  <div class="col m8">
+                    <div class="field-titles" id="resultado">
+                      {{ inventario.Codigo + ' - ' + inventario.Descricao }}
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="coluna2">
+                <th mat-header-cell *matHeaderCellDef class="field-titles"> </th>
+                <td mat-cell *matCellDef="let inventario">
+                  <div class="col m2">
+                    <button mat-icon-button color="orange" (click)="editar(inventario)">
+                      ABRIR
+                      <mat-icon>chevron_right</mat-icon>
+                    </button>
+
+                  </div>
+
+                </td>
+              </ng-container>
+            </div>
+            <tr mat-header-row *matHeaderRowDef="testesColunas"></tr>
+            <tr mat-row *matRowDef="let row; columns: testesColunas"></tr>
+          </mat-table>
+        </form>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </div>
+  </div>
+
+</div>

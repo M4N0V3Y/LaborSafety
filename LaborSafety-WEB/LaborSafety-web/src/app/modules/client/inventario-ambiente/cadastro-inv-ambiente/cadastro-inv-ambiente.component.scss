@@ -1,0 +1,108 @@
+@media print{
+  
+  mat-icon{
+    display: none;
+  }
+  #treeviewScreen{
+    display: none
+  }
+  #NrScreen{
+    display: none
+  }
+ }
+ @media screen{
+  #NrImpressao{
+    display: none
+  }
+    #treeviewImpressao{
+      display: none
+    }
+    #imprimir{
+      display: none;
+    }
+ }
+.ajusteSelect {
+  width : 100% !important;
+  }
+
+
+.greentext {
+  color: rgb(0, 128, 0);
+}
+.yellowtext {
+  color: rgb(255, 255, 0);
+}
+.redtext {
+  color: rgb(255, 51, 0);
+}
+.blacktext {
+  color: rgb(0, 0, 0);
+}
+.checkbox{
+  white-space: pre-line;
+  width: 100%;
+}
+
+
+
+.detalhesTitulo{
+    color: red !important;
+}
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+.right-side {
+  float: right;
+}
+
+.btn {
+  background-color: #F05D22;
+  box-shadow:  3px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+.checkbox{
+  float: left;
+}
+
+.mat-checkbox-label {
+  .p{
+    white-space: pre-line !important;
+    line-height: 150%;
+  
+  }
+   
+}
+p{
+  white-space: pre-line;
+  line-height: 150%;
+
+}
+
+.input-icons i { 
+  position: absolute;
+  padding: 4px 4px 4px calc(100% - 36px);
+} 
+
+.input-icons { 
+  width: 100%; 
+  margin-bottom: 10px; 
+} 
+
+
+.input-field { 
+  width: 100%; 
+  text-align: center; 
+} 
+
+input.mat-input-element {
+  padding-right: 40px !important;
+}

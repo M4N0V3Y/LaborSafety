@@ -1,0 +1,49 @@
+// @import './src/assets/scss/theme/themes';
+.active-link {
+  color: rgb(240,93,34);
+  font-weight: bold !important;
+  border-left: 4px solid rgb(240,93,34) !important;
+}
+
+.mat-sidenav-content {
+  height: 89vh;
+}
+
+.panel-title-expand-menu {
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  white-space: nowrap !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  padding: 4px !important;
+}
+
+.panel-title-expand-menu-text {
+  padding-left: 14px !important;
+}
+
+.row.mat-line {
+  min-width: 109% !important;
+}
+
+.mat-list-item {
+  padding-right: 25px !important;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  border-left: 4px solid white;
+}
+
+.mat-list-item:first-child {
+  border-top: none;
+}
+
+.mat-list-item:last-child {
+  border-top: none;
+}
+
+.mat-list-item:hover {
+  transition: all 0.15s ease-in-out;
+  color: rgb(255,153,0);
+  border-left: 4px solid rgb(255,153,0) !important;
+}
+
+

@@ -1,0 +1,20 @@
+<div class="body">
+  <div class="row container login-container">
+    <div class="col s12">
+      <div class="col s3 m2 l2 xl2 login-logo">
+        <img [src]="logoSrc" id="logo" alt="Logo" />
+      </div>
+      <div class="col s9 m10 l10 xl10">
+        <h2 class="text-grey text-lighten-2">{{nomeCabecalho}}</h2>
+      </div>
+    </div>
+    <div class="login-texto">{{msgTelaPrincipal}}</div>
+  </div>
+  <div class="row container">
+    <div class="col s12">
+      <div class="float-right">
+        <app-login-internal></app-login-internal>
+      </div>
+    </div>
+  </div>
+</div>

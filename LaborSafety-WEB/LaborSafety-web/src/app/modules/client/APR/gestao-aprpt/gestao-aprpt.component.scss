@@ -1,0 +1,75 @@
+#cadastrarButton {
+    margin-top: 15px;
+  }
+  
+  .basediv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .basechild {
+    flex: 1 1 300px;
+  }
+
+  .mat-header-cell{
+    width: 88%; 
+    color: primary-color;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  #resultado {
+    max-width: 120ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+  
+  .small_card {
+    width: 25vw;
+  }
+  
+  section.mat-elevation-z1 {
+    min-width: 96%;
+    padding: 11px;
+  }
+  
+  .cardCheckboxes {
+    margin: 15px 0;
+    height: 45vh !important;
+    overflow-y: scroll;
+  
+  }
+    
+  .ajusteSelect {
+    width : 100% !important;
+  }
+  
+
+
+  .abrirFiltrosBtn{
+      color: orange;
+     
+  }
+  @media screen and (max-width: 600px) {
+    .right-content {
+      float: none;
+    }
+    
+    .left-content {
+      float: none;
+    }
+  
+    .basediv {
+      justify-content: center;
+    }
+  
+    .basechild {
+      flex: 1 1 50%;
+    }
+    table {
+      width: 100%;
+    }
+  }

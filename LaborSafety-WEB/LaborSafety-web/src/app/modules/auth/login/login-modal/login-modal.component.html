@@ -1,0 +1,9 @@
+<div class="modal-header modal-header-dialog">
+  <span>Favor realizar login novamente</span>
+  <button mat-raised-button class="close btn-dialog" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body modal-body-dialog" style="text-align: center">
+    <app-login-internal [is-modal]="true" (logged)="loginCallback($event)"></app-login-internal>
+</div>

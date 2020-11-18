@@ -1,0 +1,53 @@
+<app-header [snav]="snav" [title]="title"></app-header>
+<mat-sidenav-container>
+  <mat-sidenav opened="false" mode="push" #snav>
+    <mat-nav-list>
+      <mat-accordion>
+        <div *ngFor="let navItem of menuComPermissoesDeTela">
+          <mat-list-item
+            *ngIf="(!navItem.children || navItem.children.length === 0)"
+            (click)="title = navItem.titlePage; menuClick(navItem.link); snav.toggle();" [routerLink]="navItem.link" [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active-link">
+            <a class="row" matLine>
+              <div class="col left-align">
+                <mat-icon matPrefix>{{ navItem.icon }}</mat-icon>
+              </div>
+              <div class="col">
+                {{ navItem.title }}
+              </div>
+            </a>
+          </mat-list-item>
+          <mat-expansion-panel *ngIf="navItem.children && navItem.children.length > 0  &&shouldShow(navItem.requiredPermission)" class="mat-elevation-z0">
+            <mat-expansion-panel-header [expandedHeight]="'48px'" matLine>
+              <mat-panel-title class="panel-title-expand-menu">
+                <div class="col left-align">
+                  <mat-icon matPrefix>{{ navItem.icon }}</mat-icon>
+                </div>
+                <div class="col panel-title-expand-menu-text">
+                  {{ navItem.title }}
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let navPage of navItem.children" matLine>
+              <mat-list-item *ngIf="shouldShow(navPage.requiredPermission)" (click)="title = navPage.titlePage; menuClick(navPage.link);"
+                [routerLink]="navPage.link" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active-link">
+                <a class="row " matLine>
+                  <div class="col left-align">
+                    <mat-icon matPrefix>{{ navPage.icon }}</mat-icon>
+                  </div>
+                  <div class="col">
+                    {{ navPage.title }}
+                  </div>
+                </a>
+              </mat-list-item>
+            </div>
+          </mat-expansion-panel>
+        </div>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content #scrollEl id="scrollEl" style="padding: 25px 35px" cdk-scrollable>
+    <ng-content select="router-outlet"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

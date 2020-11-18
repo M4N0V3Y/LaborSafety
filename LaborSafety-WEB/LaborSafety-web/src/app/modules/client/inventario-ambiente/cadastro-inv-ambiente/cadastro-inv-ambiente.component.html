@@ -1,0 +1,522 @@
+<!-- TÍTULO DA PÁGINA -->
+<title>
+  Cadastro de Inventário de Ambiente
+</title>
+<div class="row">
+  <div class="col l12 m12 s12">
+    <div class="title">
+      <button mat-button (click)="redirecionarTelaGestao()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+     {{textoTitle}}
+    </div>
+  </div>
+</div>
+
+<!-- ELEVAÇÃO EXTERNA -->
+<div class="mat-elevation-z8" style="margin: 1em">
+  <div id=page>
+
+    <!-- SISTEMA OPERACIONAL COM SELECT -->
+    <div class="basediv3" style="margin: 1em 1em 1em 1em">
+      <div class="field-titles">
+        AMBIENTE
+      </div>
+      <mat-form-field style="width: 100%" appearance="outline">
+        <mat-label>Selecionar Ambiente</mat-label>
+        <mat-select [disabled]="desabilitarButtonEdicao" required name="comboSO"
+          [(ngModel)]="ambienteSelecionado" (selectionChange)="selectFilters($event, 'ambiente')">
+          <mat-option *ngFor="let ambiente of ambientes" [value]="ambiente">
+            {{ ambiente.Nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- DESCRIÇÃO COM TEXTAREA -->
+    <div class="basediv3" style="margin: 1em 1em 1em 1em">
+      <div class="field-titles">
+        DESCRIÇÃO RESUMIDA DO AMBIENTE
+      </div>
+      <form style="width: 100%; margin-top: 1em">
+        <div class="full-width-textarea">
+          <textarea id=textareaDescricao cdkTextareaAutosize
+                    matInput
+                    maxlength="500"
+                    [disabled]="desabilitarButtonEdicao"
+                    [(ngModel)]="descricaotextArea"
+                    name="descricaotextArea">{{descricaotextArea}}
+          </textarea>
+        </div>
+      </form>
+    </div>
+
+    <!-- RISCOS -->
+    <div class="basediv3" style="margin: 1em 1em 1em 1em">
+      <div class="title">
+        Riscos
+      </div>
+    </div>
+    <!-- ELEVAÇÃO DE RISCOS -->
+    <div class="mat-elevation-z2" style="margin: 1em 1em 1em 1em">
+      <!--PAINEIS DE RISCOS-->
+      <div class="row" style="margin: 1em 1em 1em 1em">
+        <div class="row">
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                  {{ (tiposRisco[1])?.Nome | uppercase }}
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableQuimico [dataSource]="todosRiscosMapeados[1]" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Risco">
+                    <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Risco.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Severidade">
+                    <mat-header-cell *matHeaderCellDef> Severidade </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Severidade.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Frequencia">
+                    <mat-header-cell *matHeaderCellDef> Frequência </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Frequencia.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Grau">
+                    <mat-header-cell *matHeaderCellDef> Grau </mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="font-weight: 600; font-size: 20px;"
+                      [ngClass]="{ '1': 'greentext', '2': 'yellowtext', '3':'redtext', '4': 'blacktext' }[element.Grau]">
+                      {{ element.Grau }} </mat-cell>
+                  </ng-container>
+                  <!-- BOTÕES -->
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                      <!-- CRIAR E DELETAR -->
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="editar(1, row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="deletar(1,i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button [disabled]="desabilitarButtonEdicao" mat-button class="texto-primary right-side"
+                  (click)="adicionarRisco(2)">
+                  Adicionar Risco
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </div>
+        <div class="row">
+
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                  {{ (tiposRisco[2])?.Nome | uppercase }}
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableBiologico [dataSource]="todosRiscosMapeados[2]" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Risco">
+                    <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Risco.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Severidade">
+                    <mat-header-cell *matHeaderCellDef> Severidade </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Severidade.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Frequencia">
+                    <mat-header-cell *matHeaderCellDef> Frequência </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Frequencia.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Grau">
+                    <mat-header-cell *matHeaderCellDef> Grau </mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="font-weight: 600; font-size: 20px;"
+                      [ngClass]="{ '1': 'greentext', '2': 'yellowtext', '3':'redtext', '4': 'blacktext' }[element.Grau]">
+                      {{ element.Grau}} </mat-cell>
+                  </ng-container>
+                  <!-- BOTÕES -->
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                      <!-- CRIAR E DELETAR -->
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="editar(2, row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="deletar(2,i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button mat-button [disabled]="desabilitarButtonEdicao" class="texto-primary right-side"
+                  (click)="adicionarRisco(3)">
+                  Adicionar Risco
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </div>
+        <div class="row">
+
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                  {{ (tiposRisco[3])?.Nome | uppercase }}
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableErgonomico [dataSource]="todosRiscosMapeados[3]" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Risco">
+                    <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Risco.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Severidade">
+                    <mat-header-cell *matHeaderCellDef> Severidade </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Severidade.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Frequencia">
+                    <mat-header-cell *matHeaderCellDef> Frequência </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Frequencia.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Grau">
+                    <mat-header-cell *matHeaderCellDef> Grau </mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="font-weight: 600; font-size: 20px;"
+                      [ngClass]="{ '1': 'greentext', '2': 'yellowtext', '3':'redtext', '4': 'blacktext' }[element.Grau]">
+                      {{ element.Grau}} </mat-cell>
+                  </ng-container>
+                  <!-- BOTÕES -->
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                      <!-- CRIAR E DELETAR -->
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="editar(3, row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="deletar(3,i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button mat-button [disabled]="desabilitarButtonEdicao" class="texto-primary right-side"
+                  (click)="adicionarRisco(4)">
+                  Adicionar Risco
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </div>
+        <div class="row">
+
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                  {{ (tiposRisco[4])?.Nome | uppercase }}
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableAcidente [dataSource]="todosRiscosMapeados[4]" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Risco">
+                    <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Risco.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Severidade">
+                    <mat-header-cell *matHeaderCellDef> Severidade </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Severidade.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Frequencia">
+                    <mat-header-cell *matHeaderCellDef> Frequência </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Frequencia.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Grau">
+                    <mat-header-cell *matHeaderCellDef> Grau </mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="font-weight: 600; font-size: 20px;"
+                      [ngClass]="{ '1': 'greentext', '2': 'yellowtext', '3':'redtext', '4': 'blacktext' }[element.Grau]">
+                      {{ element.Grau }} </mat-cell>
+                  </ng-container>
+                  <!-- BOTÕES -->
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                      <!-- CRIAR E DELETAR -->
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="editar(4, row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="deletar(4,i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button mat-button [disabled]="desabilitarButtonEdicao" class="texto-primary right-side"
+                  (click)="adicionarRisco(5)">
+                  Adicionar Risco
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+        </div>
+        <div class="row">
+
+          <mat-expansion-panel [expanded]="expanded">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="field-titles">
+                  {{ (tiposRisco[5])?.Nome | uppercase }}
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form #editForm="ngForm">
+              <mat-table #tableOutros [dataSource]="todosRiscosMapeados[5]" [trackBy]="trackBy">
+                <ng-container>
+                  <ng-container matColumnDef="Risco">
+                    <mat-header-cell *matHeaderCellDef> Risco </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Risco.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Severidade">
+                    <mat-header-cell *matHeaderCellDef> Severidade </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Severidade.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Frequencia">
+                    <mat-header-cell *matHeaderCellDef> Frequência </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.Frequencia.Nome }} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="Grau">
+                    <mat-header-cell *matHeaderCellDef> Grau </mat-header-cell>
+                    <mat-cell *matCellDef="let element" style="font-weight: 600; font-size: 20px;"
+                      [ngClass]="{ '1': 'greentext', '2': 'yellowtext', '3':'redtext', '4': 'blacktext' }[element.Grau]">
+                      {{ element.Grau}} </mat-cell>
+                  </ng-container>
+                  <!-- BOTÕES -->
+                  <ng-container matColumnDef="Controles">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="container-controles right-align" *matCellDef="let row; let i = index">
+                      <!-- CRIAR E DELETAR -->
+                      <div>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="editar(5, row, i)">
+                          <mat-icon>create_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button [disabled]="desabilitarButtonEdicao" style="color: rgb(190,190,190)"
+                          (click)="deletar(5,i)">
+                          <mat-icon>delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+            </form>
+            <br>
+            <div class="row">
+              <div class="col l12 m12 s12">
+                <button mat-button [disabled]="desabilitarButtonEdicao" class="texto-primary right-side"
+                  (click)="adicionarRisco(6)">
+                  Adicionar Risco
+                  <mat-icon class="texto-primary">add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </div>
+      </div> <!-- row margin -->
+    </div> <!-- elevation-z2 -->
+
+    <!-- NORMA REGULAMENTADORA -->
+    <div class="basediv" style="margin: 1em 1em 1em 1em">
+      <div class="title" style="margin-right: 2em !important">
+        Norma Regulamentadora
+      </div>
+      <mat-checkbox [disabled]="desabilitarButtonEdicao" [(ngModel)]="nrNaoAplicavel" [checked]="nrNaoAplicavel"
+        (change)="changeNR()">
+        NR Não Aplicável
+      </mat-checkbox>
+    </div>
+
+    <div class="mat-elevation-z2" style="margin: 1em 1em 1em 1em">
+
+      <div class="basediv3" style="margin: 1em 1em 1em 1em">
+
+        <mat-expansion-panel style="width: 100%;" [expanded]="expanded">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="field-titles">
+                SELECIONAR NORMA(S)
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-container>
+            <div class="row" id=NrScreen>
+              <div *ngFor="let NR of todosNRs; let i = index" class="example-item col l12 m12 s12">
+                <div class="col l12 m12 s12" *ngIf="i !== 0">
+                  <br>
+                  <mat-checkbox class="checkbox" [disabled]="desabilitarButtonEdicao" (change)="changeCheckBox()"
+                    [(ngModel)]="NR.checked" [checked]="NR.checked">
+                    <p>{{NR.Codigo}}--{{NR.Nome}}</p>
+                  </mat-checkbox>
+                </div>
+                <br>
+              </div>
+            </div>
+
+            <div class="row" id=NrImpressao>
+              <div *ngFor="let NR of nrImpressao " class="example-item col l12 m12 s12">
+                <br>
+                <div class="col l12 m12 s12">
+                  <mat-checkbox class="checkbox" [disabled]="desabilitarButtonEdicao" checked=true>
+                    <p>{{NR.Codigo}}--{{NR.Nome}}</p>
+                  </mat-checkbox>
+                </div>
+                <br>
+              </div>
+            </div>
+
+          </ng-container>
+        </mat-expansion-panel>
+
+      </div>
+
+
+    </div> <!-- elevation-z2 -->
+
+    <div class="row">
+      <div class="col l12 m12 s12">
+        <div class="field-titles">
+          OBSERVAÇÕES GERAIS
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form class="col l12 m12 s12">
+        <div class="full-width-textarea">
+          <textarea id=textarea cdkTextareaAutosize
+                    matInput
+                    maxlength="500"
+                    [disabled]="desabilitarButtonEdicao"
+                    [(ngModel)]="observacaotextArea"
+                    name="observacaotextArea">{{observacaotextArea}}
+          </textarea>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- LOCAIS DE INSTALAÇÃO -->
+    <div class="row">
+      <div class="col l12 m12 s12">
+        <div class="title">
+          Local de Instalação
+        </div>
+      </div>
+    </div>
+    <div class="treediv" *ngIf="treeviewLoader" id=treeviewScreen>
+        <cdk-virtual-scroll-viewport itemSize="50" class="scroll-viewport mat-elevation-z2" style="margin-bottom: 2em;">
+          <div *ngIf="treeviewEnabled">
+            <app-treeview-li  [hasPermission]="!desabilitarDesassociacaoTreeview"
+                              [hasEditingPermission]="desabilitarButtonEdicao"
+                              [hierarchyInput]="nodosSelecionadosTreeview"
+                              (selectedNodes)="retornaSelecionados($event)"
+                              (isOperational)="retornaisOperational($event)">
+            </app-treeview-li>
+          </div>
+        </cdk-virtual-scroll-viewport>
+    </div>
+    <div id=treeviewImpressao>
+      <br>
+      <div *ngFor="let local of inventarioAtualSalvo.LOCAL_INSTALACAO_MODELO" class="treeviewImpressao">
+        <mat-checkbox checked=true>{{local.Nome}}</mat-checkbox>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l12 m12 s12">
+        <h5>
+          RISCO GERAL DE AMBIENTE: <span [ngClass]="{'1':'greentext', '2':'yellowtext', '3' : 'redtext', '4' : 'blacktext'}[maiorRiscoGeral]">{{maiorRiscoGeral}}</span>
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="basediv2">
+    <button class="basechild2 btn" mat-raised-button [disabled]="isCadastro || isRascunho" (click)="baixarLog()">BAIXAR LOG</button>
+    <button class="basechild2 btn" mat-raised-button (click)="imprimir()" [disabled]="desabilitarButtonImpressao">
+      IMPRIMIR INVENTÁRIO
+    </button>
+    <button class="basechild2 btn"  mat-raised-button *ngIf="isRascunho || isCadastro" (click)="salvarComoRascunho()">Salvar como Rascunho</button>
+    <button [disabled]="desabilitarButtonEdicao" class="basechild2 btn" mat-raised-button
+      (click)="salvar()">{{textoBtn}}</button>
+    <button [disabled]="desabilitarButtonExcluir" class="basechild2 btn" mat-raised-button
+      (click)="deletarInventario()">Excluir</button>
+  </div>
+  <button id=imprimir [useExistingCss]="true" printSectionId="page" ngxPrint>
+    teste
+  </button>
+</div>

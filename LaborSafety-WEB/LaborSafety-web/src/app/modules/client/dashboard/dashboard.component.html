@@ -1,0 +1,93 @@
+<div class="col l12 m12 s12">
+  <div class="row">
+    <div class="col l3 m3 s12">
+      <span class="title">Home</span>
+    </div>
+  </div>
+
+
+
+    <div class="row">
+      <div class="col l3 m3 s12">
+        <span class="title">Páginas</span>
+      </div>
+    </div>
+
+    <div class="row baseflex" style="margin: 10px;">
+      <button class="page-btn" (click)="gerenciamentoPerfisBtn()" *ngIf="verificarPermissaoDeTela(1)">
+        <div class="row icon">
+          <mat-icon class="icon">people_alt</mat-icon>
+        </div>
+        <p class="field-titles-dark">Gestão de perfis</p>
+      </button>
+
+      <button class="page-btn" (click)="inventarioAmbienteBtn()" *ngIf="verificarPermissaoDeTela(2)">
+        <div class="row icon">
+          <mat-icon class="icon">warning</mat-icon>
+        </div>
+        <p class="field-titles-dark">Inventário de ambiente</p>
+      </button>
+
+      <button class="page-btn" (click)="inventarioAtividadeBtn()" *ngIf="verificarPermissaoDeTela(3)">
+        <div class="row icon">
+          <mat-icon class="icon">error_outline</mat-icon>
+        </div>
+        <p class="field-titles-dark">Inventário de atividade</p>
+      </button>
+
+      <button class="page-btn" (click)="APRPTBtn()" *ngIf="verificarPermissaoDeTela(4)">
+        <div class="row icon">
+          <mat-icon class="icon">insert_drive_file</mat-icon>
+        </div>
+        <p class="field-titles-dark">APR</p>
+      </button>
+
+      <button class="page-btn" (click)="importarExportarDadosBtn()" *ngIf="verificarPermissaoDeTela(5)">
+        <div class="row icon">
+          <mat-icon class="icon">arrow_downward</mat-icon>
+        </div>
+        <p class="field-titles-dark">Importar/Exportar dados</p>
+      </button>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col l3 m3 s12">
+        <span class="title">Ações</span>
+      </div>
+    </div>
+
+    <div class="row baseflex" style="margin: 10px">
+
+      <button class="action-btn" (click)="novaAPRPTBtn()" *ngIf="verificarPermissaoDeFuncionalidade(4,1)">
+        <div class="row icon">
+          <mat-icon class="icon">add_circle_outline</mat-icon>
+        </div>
+        <p class="field-titles">Nova APR</p>
+      </button>
+
+      <button class="action-btn" (click)="gerarAPRPTEmBrancoBtn()" *ngIf="verificarPermissaoDeFuncionalidade(4,3)">
+        <div class="row icon">
+          <mat-icon class="icon">insert_drive_file</mat-icon>
+        </div>
+        <p class="field-titles">Gerar APR em branco</p>
+      </button>
+
+      <button class="action-btn" (click)="novoInventarioAmbienteBtn()" *ngIf="verificarPermissaoDeFuncionalidade(2,1)">
+        <div class="row icon">
+          <mat-icon class="icon">add_circle_outline</mat-icon>
+        </div>
+        <p class="field-titles">Novo inventario de ambiente</p>
+      </button>
+
+      <button class="action-btn" (click)="novoInventarioAtividadeBtn()" *ngIf="verificarPermissaoDeFuncionalidade(3,1)">
+        <div class="row icon">
+          <mat-icon class="icon">add_circle_outline</mat-icon>
+        </div>
+        <p class="field-titles">Novo inventário de atividade</p>
+      </button>
+    </div>
+
+
+</div>

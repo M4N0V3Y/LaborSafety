@@ -1,0 +1,62 @@
+.basediv {
+flex: 0 0 200px;
+}
+
+.baseflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background-color: rgb(255,153,0);
+  color: white;
+  border-radius: 1%;
+  margin-bottom: .7em;
+  margin-right: 1em;
+  flex: 0 0 200px;
+  padding: 1em 1em 1em 1em;
+  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.7);
+  transition: transform 0.3s;
+}
+
+.page-btn:hover{
+  transform: translate(0px, -3px);
+  box-shadow: 10px 10px 10px -9px rgba(30, 30, 30, 0.9);
+}
+
+.action-btn {
+  flex: 0 0 200px;
+  padding: 1em 1em 1em 1em;
+  background-color: white;
+  color: rgb(240,93,34);
+  margin-bottom: .7em;
+  margin-right: 1em;
+  box-shadow: 5px 5px 5px -5px rgba(0,0,0,0.7);
+  transition: transform 0.3s;
+}
+
+.action-btn:hover{
+  transform: translate(0px, -3px);
+  box-shadow: 10px 10px 10px -9px rgba(30, 30, 30, 0.9);
+}
+
+.last-col {
+  min-width: 15vw !important;
+}
+
+.center-col {
+  min-width: 410px !important;
+}
+
+.first-col {
+  min-width: 315px !important;
+}
+
+.row .col.s12 {
+  margin-bottom: 15px;
+}
+
+.icon{
+  text-align: center !important;
+}
+

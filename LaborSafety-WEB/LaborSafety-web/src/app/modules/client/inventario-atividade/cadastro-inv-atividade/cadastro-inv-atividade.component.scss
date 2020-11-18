@@ -1,0 +1,79 @@
+@media print{
+  
+  mat-icon{
+    display: none;
+  }
+  #treeviewScreen{
+    display: none
+  }
+  #imprimir{
+    display: none;
+  }
+  #buttons{
+    display: none;
+  }
+  
+ }
+ @media screen{
+    #treeviewImpressao{
+      display: none
+    }
+    #imprimir{
+      display: none;
+    }
+ }
+.ajusteSelect {
+    width : 100% !important;
+}
+
+.detalhesTitulo{
+    color: red !important;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+.right-side {
+  float: right;
+}
+
+.btn {
+  background-color: #F05D22;
+  box-shadow:  3px;
+}
+
+.greentext {
+  color: rgb(0, 128, 0);
+}
+.yellowtext {
+  color: rgb(255, 255, 0);
+}
+.redtext {
+  color: rgb(255, 51, 0);
+}
+.blacktext {
+  color: rgb(0, 0, 0);
+}
+
+.input-icons i { 
+  position: absolute;
+  padding: 4px 4px 4px calc(100% - 36px);
+} 
+
+.input-icons { 
+  width: 100%; 
+}
+
+.input-field { 
+  width: 100%; 
+  text-align: center; 
+} 
+
+input.mat-input-element {
+  padding-right: 40px !important;
+}

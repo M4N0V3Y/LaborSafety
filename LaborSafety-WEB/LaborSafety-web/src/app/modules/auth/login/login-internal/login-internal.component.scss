@@ -1,0 +1,22 @@
+.form-login {
+  width: 292.25px !important;
+
+  mat-card {
+		mat-card-content {
+			mat-form-field {
+				width: 100% !important;
+			}
+		}
+	}
+}
+
+.visibilityPass {
+	cursor: pointer;
+	float: right;
+	margin-right: 15px;
+}
+
+.link { 
+	background:none;
+	border:none; 
+}
