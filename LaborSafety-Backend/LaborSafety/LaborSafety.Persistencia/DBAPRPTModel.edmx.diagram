@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="200ffc4fd1d64a73aa88b2c862ec99da" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.AMBIENTE" Width="1.5" PointX="3.75" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.APR" Width="1.5" PointX="3" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.APROVADOR_APR" Width="1.5" PointX="5.25" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.AREA" Width="1.5" PointX="9" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.ATIVIDADE_PADRAO" Width="1.5" PointX="3.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.BLOQUEIO" Width="1.5" PointX="11.25" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.BLOQUEIO_LOCAL_INSTALACAO" Width="1.5" PointX="13.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.DISCIPLINA" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.DISPOSITIVO_BLOQUEIO" Width="1.5" PointX="9" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.DURACAO" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI_RISCO" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI_RISCO_INVENTARIO_AMBIENTE" Width="1.5" PointX="13.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI_RISCO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="10.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI_RISCO_RASCUNHO" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI_RISCO_RASCUNHO_INVENTARIO_AMBIENTE" Width="1.5" PointX="10.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EPI_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="13.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.EXECUTANTE_APR" Width="1.5" PointX="11.25" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.FUNCIONALIDADE" Width="1.5" PointX="13.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.FUNCIONALIDADE_TELA" Width="1.5" PointX="16" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.INVENTARIO_AMBIENTE" Width="1.5" PointX="6" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.INVENTARIO_ATIVIDADE" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOCAL_A_BLOQUEAR" Width="1.5" PointX="9" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOCAL_INSTALACAO" Width="1.5" PointX="11.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOCAL_INSTALACAO_INVENTARIO_AMBIENTE_HISTORICO_APR" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="11.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE_HISTORICO_APR" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOCAL_INSTALACAO_RASCUNHO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="13.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_APR" Width="1.5" PointX="5.25" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_INVENTARIO_AMBIENTE" Width="1.5" PointX="18" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_INVENTARIO_ATIVIDADE" Width="1.5" PointX="18" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_OPERACAO_APR" Width="1.5" PointX="7.5" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_PERFIL_FUNCIONALIDADE" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_RISCO_INVENTARIO_AMBIENTE" Width="1.5" PointX="20.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_RISCO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="20.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.LOG_TIPO_OPERACAO" Width="1.5" PointX="15.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.NR" Width="1.5" PointX="9" PointY="50.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.NR_INVENTARIO_AMBIENTE" Width="1.5" PointX="11.25" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.NR_RASCUNHO_INVENTARIO_AMBIENTE" Width="1.5" PointX="11.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.OPERACAO_APR" Width="1.5" PointX="11.25" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.PERFIL" Width="1.5" PointX="13.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.PERFIL_CATALOGO" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.PERFIL_FUNCIONALIDADE" Width="1.5" PointX="16" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.PESO" Width="1.5" PointX="3.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.PESSOA" Width="1.5" PointX="9" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.PROBABILIDADE" Width="1.5" PointX="6" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RASCUNHO_INVENTARIO_AMBIENTE" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RASCUNHO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="9" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RESPONSAVEL_INVENTARIO_AMBIENTE" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RESPONSAVEL_INVENTARIO_ATIVIDADE" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RISCO" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RISCO_APR" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RISCO_INVENTARIO_AMBIENTE" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RISCO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RISCO_RASCUNHO_INVENTARIO_AMBIENTE" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.RISCO_RASCUNHO_INVENTARIO_ATIVIDADE" Width="1.5" PointX="11.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.SEVERIDADE" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.STATUS_APR" Width="1.5" PointX="0.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.sysdiagrams" Width="1.5" PointX="18.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.TAG_KKS_BLOQUEIO" Width="1.5" PointX="9" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.TELA" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.TIPO_ENERGIA_BLOQUEIO" Width="1.5" PointX="9" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.TIPO_RISCO" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.USUARIO" Width="1.5" PointX="13.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.USUARIO_PERFIL" Width="1.5" PointX="16" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.DBA_INDEXJOB" Width="1.5" PointX="18.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_LaborSafetyModel.DBA_INDEXJOB_ANT" Width="1.5" PointX="0.75" PointY="21.25" IsExpanded="true" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_AMBIENTE_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_APR_APROVADOR_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_APR_EXECUTANTE_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_APR_STATUS_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_APR_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_OPERACAO_APR_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_APR_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PESSOA_APROVADOR_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_AREA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_ATIVIDADE_PADRAO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_DISPOSITIVO_BLOQUEIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_LOCAL_A_BLOQUEAR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_LOCAL_INSTALACAO_BLOQUEIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_TAG_KKS__BLOQUEIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_TIPO_ENERGIA_BLOQUEIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_BLOQUEIO_LOCAL_INSTALACAO_LOCAL_INSTALACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_DISCIPLINA_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_DURACAO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_EPI_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_INVENTARIO_AMBIENTE_EPI" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_INVENTARIO_ATIVIDADE_EPI" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_RASCUNHO_EPI" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_RASCUNHO_INVENTARIO_AMBIENTE_EPI" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE_EPI" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_CONTRA_MEDIDA_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_INVENTARIO_AMBIENTE_RISCO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_INVENTARIO_ATIVIDADE_RISCO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_RASCUNHO_EPI_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_RASCUNHO_INVENTARIO_AMBIENTE_RISCO_RASCUNHO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_EPI_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PESSOA_EXECUTANTE_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_FUNCIONALIDADE_FUNCIONALIDADE_TELA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_FUNCIONALIDADE_PERFIL_FUNCIONALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_TELA_FUNCIONALIDADE_TELA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_AMBIENTE_LOCAL_INSTALACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_AMBIENTE_NR_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_AMBIENTE_RISCO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_ATIVIDADE_LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_ATIVIDADE_RESPONSAVEL_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_INVENTARIO_ATIVIDADE_RISCO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PERFIL_CATALOGO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PESO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOCAL_INSTALACAO_LOCAL_INSTALACAO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOCAL_INSTALACAO_PERFIL_CATALOGO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOCAL_INSTALACAO_RASCUNHO_INVENTARIO_ATIVIDADE_LOCAL_INSTALACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PESO_LOCAL_INSTALACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOCAL_INSTALACAO_RASCUNHO_INVENTARIO_ATIVIDADE_RASCUNHO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_OPERACAO_APR_LOG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_INVENTARIO_AMBIENTE_LOG_TIPO_OPERACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_RISCO_INVENTARIO_AMBIENTE_LOG_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_INVENTARIO_ATIVIDADE_LOG_TIPO_OPERACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_RISCO_INVENTARIO_ATIVIDADE_LOG_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_LOG_OPERACAO_APR_OPERACAO_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_NR__NR_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_NR_RASCUNHO_INVENTARIO_AMBIENTE_NR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_NR_RASCUNHO_INVENTARIO_AMBIENTE_RASCUNHO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_OPERACAO_APR_STATUS_APR" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PERFIL_PERFIL_FUNCIONALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PERFIL_USUARIO_PERFIL" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_TELA_PERFIL_FUNCIONALIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_PROBABILIDADE_RISCO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_RASCUNHO_INVENTARIO_AMBIENTE_RASCUNHO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE_RASCUNHO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_APR_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_RASCUNHO_INVENTARIO_AMBIENTE_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_RASCUNHO_INVENTARIO_ATIVIDADE_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_RISCO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_RISCO_RISCO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_TIPO_RISCO_RISCO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_SEVERIDADE_RISCO_INVENTARIO_AMBIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_SEVERIDADE_RISCO_INVENTARIO_ATIVIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_LaborSafetyModel.FK_USUARIO_USUARIO_PERFIL" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
